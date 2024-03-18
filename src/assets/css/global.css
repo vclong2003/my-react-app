@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Global styles -------------------- */
+* {
+  box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+
+  ::-webkit-scrollbar {
+    width: var(--s-2);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray-light-2);
+    border-radius: var(--br-md);
+  }
+}
+
+:root {
+  /* Colors ------------------------ */
+  --orange: #ea7c29;
+  --red: #ef4444;
+  --green: #10b981;
+  --blue: #3b82f6;
+  --white: #ffffff;
+  --black: #000000;
+  --black-opacity: #00000057;
+  --gray: #6b7280;
+  --gray-light: #e5e7eb;
+  --gray-light-1: #e6e7eb;
+  --gray-light-2: #d4d4d4;
+  --gray-dark: #374151;
+
+  /* Font sizes -------------------- */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.875rem;
+  --fs-4xl: 2.25rem;
+  --fs-5xl: 3rem;
+  --fs-6xl: 4rem;
+
+  /* Font weights ------------------- */
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Spacing ------------------------ */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.25rem;
+  --s-6: 1.5rem;
+  --s-7: 1.75rem;
+  --s-8: 2rem;
+  --s-9: 2.25rem;
+  --s-10: 2.5rem;
+  --s-11: 2.75rem;
+  --s-12: 3rem;
+
+  /* Border radius ------------------ */
+  --br-sm: 0.2rem;
+  --br-md: 0.4rem;
+  --br-lg: 0.8rem;
+  --br-xl: 1.6rem;
+  --br-2xl: 3.2rem;
+
+  /* Shadows ------------------------ */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Loader ------------------------ */
+  --hue: 223;
+  --bg: hsl(var(--hue), 10%, 90%);
+  --fg: hsl(var(--hue), 10%, 10%);
+  --primary: hsl(var(--hue), 90%, 55%);
+  --trans-dur: 0.3s;
+}
