@@ -22,7 +22,7 @@ export default function LoginForm() {
           placeholder="Enter your password"
         />
       </S.FormGroup>
-      <S.Button type="submit">LOGIN</S.Button>
+      <S.Button type="button">LOGIN</S.Button>
     </S.Form>
   );
 }

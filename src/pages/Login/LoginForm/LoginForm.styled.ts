@@ -33,4 +33,5 @@ export const Button = styled.button`
   font-weight: var(--fw-semibold);
   background-color: var(--gold);
   border-radius: var(--br-md);
+  color: var(--white);
 `;
