@@ -8,33 +8,15 @@
   outline: none;
   margin: 0;
   padding: 0;
-
-  ::-webkit-scrollbar {
-    width: var(--s-2);
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--white);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--gray-light-2);
-    border-radius: var(--br-md);
-  }
 }
 
 :root {
   /* Colors ------------------------ */
-  --orange: #ea7c29;
-  --red: #ef4444;
-  --green: #10b981;
-  --blue: #3b82f6;
   --white: #ffffff;
   --black: #000000;
-  --black-opacity: #00000057;
-  --gray: #6b7280;
-  --gray-light: #e5e7eb;
-  --gray-light-1: #e6e7eb;
-  --gray-light-2: #d4d4d4;
-  --gray-dark: #374151;
+  --gold: #f2ba1d;
+  --light-gray: #e0dcdc;
+  --ice-blue: #cbd1d8;
 
   /* Font sizes -------------------- */
   --fs-xs: 0.75rem;

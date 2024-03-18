@@ -1,7 +1,10 @@
-export default function Button() {
-  return (
-    <div>
-      <h1>Button</h1>
-    </div>
-  );
+import React, { ButtonHTMLAttributes, ClassAttributes } from "react";
+import * as S from "./Button.styled";
+
+export default function Button(
+  props: JSX.IntrinsicAttributes &
+    ClassAttributes<HTMLButtonElement> &
+    ButtonHTMLAttributes<HTMLButtonElement>
+) {
+  return <S.Button />;
 }
