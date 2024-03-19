@@ -26,6 +26,12 @@ export const Input = styled.input`
   border: 2px solid var(--ice-blue);
 `;
 
+export const Error = styled.span`
+  color: var(--red);
+  font-size: var(--fs-md);
+  margin: var(--s-2) 0;
+`;
+
 export const Button = styled.button`
   margin: var(--s-4) 0;
   padding: var(--s-3);
