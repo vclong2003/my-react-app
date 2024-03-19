@@ -5,6 +5,7 @@ import { validateEmail, validatePassword } from "../../../utils/auth.utils";
 
 interface ILoginFormProps {
   onLogin: (values: ILoginPayload) => void;
+  loading?: boolean;
 }
 
 interface IFormErrors {
@@ -12,7 +13,7 @@ interface IFormErrors {
   password?: string;
 }
 
-export default function LoginForm({ onLogin }: ILoginFormProps) {
+export default function LoginForm({ onLogin, loading }: ILoginFormProps) {
   const [errors, setErrors] = useState<IFormErrors>({});
   const [values, setValues] = useState<ILoginPayload>({
     email: "",
@@ -21,6 +22,7 @@ export default function LoginForm({ onLogin }: ILoginFormProps) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setErrors({});
     const emailValidation = validateEmail(values.email);
     const passwordValidation = validatePassword(values.password);
@@ -62,7 +64,9 @@ export default function LoginForm({ onLogin }: ILoginFormProps) {
         />
         {errors.password && <S.Error>{errors.password}</S.Error>}
       </S.FormGroup>
-      <S.Button type="submit">LOGIN</S.Button>
+      <S.Button loading={loading} type="submit">
+        LOGIN
+      </S.Button>
     </S.Form>
   );
 }
