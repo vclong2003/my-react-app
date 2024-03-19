@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../store";
 
 import "../assets/css/global.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 interface IAppProviderProps {
   children: React.ReactNode;
