@@ -64,7 +64,7 @@ export default function LoginForm({ onLogin, loading }: ILoginFormProps) {
         />
         {errors.password && <S.Error>{errors.password}</S.Error>}
       </S.FormGroup>
-      <S.Button loading={loading} type="submit">
+      <S.Button $loading={loading} type="submit">
         LOGIN
       </S.Button>
     </S.Form>

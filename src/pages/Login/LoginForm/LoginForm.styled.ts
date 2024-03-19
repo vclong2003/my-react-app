@@ -33,14 +33,15 @@ export const Error = styled.span`
 `;
 
 interface IButtonProps {
-  loading?: boolean;
+  $loading?: boolean;
 }
 export const Button = styled.button<IButtonProps>`
   margin: var(--s-4) 0;
   padding: var(--s-3);
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
-  background-color: var(--gold);
+  background-color: ${(props) =>
+    props.$loading ? "var(--blue-gray)" : "var(--gold)"};
   border-radius: var(--br-md);
-  color: ${(props) => (props.loading ? "var(--light-gray)" : "var(--white)")};
+  color: var(--white);
 `;
