@@ -18,7 +18,7 @@ export interface IUser {
 }
 
 export interface IAuthState {
-  user: IUser | null;
+  user: IUser | false | null;
   loading: boolean;
   error: string | null;
 }
@@ -57,7 +57,7 @@ export interface ILoginPayload {
 
 export interface ILoginResponse {
   user: IUser | false;
-  errors: { [key: string]: string } | false;
+  errors: { email: string } | false;
   success: boolean;
   data: any[];
   user_cookie: string;

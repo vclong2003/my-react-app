@@ -19,3 +19,11 @@ export const validatePassword = (password: string): IValidationResult => {
 
   return { isValid: false, message: "Password must be at least 6 characters" };
 };
+
+export const saveUserCookie = (user_cookie: string) => {
+  localStorage.setItem("user_cookie", user_cookie);
+};
+
+export const getUserCookie = (): string | null => {
+  return localStorage.getItem("user_cookie");
+};
