@@ -1,12 +1,3 @@
-/*
-  "profile_id": "9",
-  "login": "admin.training@powergatesoftware.com",
-  "firstName": "Josh",
-  "lastName": "Finamore",
-  "dateOfLoginAttempt": "1710816391",
-  "countOfLoginAttempts": "1",
-  "forceChangePassword": "0"
-*/
 export interface IUser {
   profile_id: string;
   login: string;
@@ -17,43 +8,23 @@ export interface IUser {
   forceChangePassword: string;
 }
 
+export enum EGender {
+  Male = "male",
+  Female = "female",
+  Other = "other",
+}
+
 export interface IAuthState {
   user: IUser | false | null;
   loading: boolean;
   error: string | null;
 }
 
+// Login ------------------------------------------------
 export interface ILoginPayload {
   email: string;
   password: string;
 }
-
-/*
-{
-    "user": false,
-    "errors": {
-        "email": "Invalid email or password."
-    },
-    "success": false,
-    "data": []
-}
-
-{
-    "user": {
-        "profile_id": "9",
-        "login": "admin.training@powergatesoftware.com",
-        "firstName": "Josh",
-        "lastName": "Finamore",
-        "dateOfLoginAttempt": "0",
-        "countOfLoginAttempts": "0",
-        "forceChangePassword": "0"
-    },
-    "user_cookie": "9.5a8eefea2a1299f87e8e1a74994827840debf897a605c603444091fa519da275",
-    "success": true,
-    "errors": false,
-    "data": []
-}
-*/
 
 export interface ILoginResponse {
   user: IUser | false;
@@ -61,4 +32,34 @@ export interface ILoginResponse {
   success: boolean;
   data: any[];
   user_cookie: string;
+}
+
+// Register ------------------------------------------------
+
+export interface IRegisterPayload {
+  email: string;
+  password: string;
+  repeatPassword: string;
+  name: string;
+  gender: EGender;
+  region: number;
+  state: number;
+}
+export interface IRegisterResponse {
+  message: string;
+  error: boolean;
+  code: number;
+  data: {
+    id: number;
+    email: string;
+    name: string;
+    gender: EGender;
+    avatar: string | null;
+    region: number;
+    state: number;
+    description: string | null;
+    createdAt: string;
+    updatedAt: string;
+    token: string;
+  };
 }
