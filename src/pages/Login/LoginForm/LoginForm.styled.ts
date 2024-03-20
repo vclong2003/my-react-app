@@ -1,6 +1,7 @@
+import { Field, Form as FormikForm } from "formik";
 import styled from "styled-components";
 
-export const Form = styled.form`
+export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
 `;
@@ -18,18 +19,12 @@ export const Label = styled.label`
   cursor: pointer;
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   padding: var(--s-3) var(--s-5);
   font-size: var(--fs-md);
   background-color: var(--light-gray);
   border-radius: var(--br-md);
   border: 2px solid var(--ice-blue);
-`;
-
-export const Error = styled.span`
-  color: var(--red);
-  font-size: var(--fs-md);
-  margin: var(--s-2) 0;
 `;
 
 interface IButtonProps {

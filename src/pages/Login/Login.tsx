@@ -3,7 +3,6 @@ import LoginForm from "./LoginForm/LoginForm";
 import { ILoginPayload } from "../../interfaces/auth.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { login } from "../../store/authSlice";
 import { Navigate } from "react-router-dom";
 
 import backgroundImage from "../../assets/images/login-background.png";
@@ -13,9 +12,7 @@ export default function Login() {
     (state: RootState) => state.authSlice
   );
   const dispatch = useDispatch<AppDispatch>();
-  const handleLogin = (values: ILoginPayload) => {
-    dispatch(login(values));
-  };
+  const handleLogin = (values: ILoginPayload) => {};
 
   return (
     <S.Container>
