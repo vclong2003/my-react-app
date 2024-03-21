@@ -4,8 +4,8 @@ interface IButtonProps {
   $loading?: boolean;
 }
 export const Button = styled.button<IButtonProps>`
-  margin: var(--s-4) 0;
-  padding: var(--s-3);
+  margin: var(--s-5) 0;
+  padding: var(--s-2);
   font-size: var(--fs-lg);
   font-weight: var(--fw-semibold);
   background-color: ${(props) =>
