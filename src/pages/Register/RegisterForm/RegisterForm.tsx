@@ -7,26 +7,14 @@ import {
   FormLabel,
 } from "../../../components/formComponents";
 import { EGender, IRegisterPayload } from "../../../interfaces/auth.interface";
-
 import * as Yup from "yup";
 import LocationSelector from "./LocationSelector";
-import { capitalize } from "../../../utils/textUtils";
+import GenderSelector from "./GenderSelector";
 
 interface IRegisterButtonProps {
   onRegister: (values: IRegisterPayload) => void;
   loading: boolean;
 }
-
-const RegisterSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().required("Required"),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
-    .required("Required"),
-  name: Yup.string().required("Required"),
-  region: Yup.number().not([0], "Required").required("Required"),
-  state: Yup.number().not([0], "Required").required("Required"),
-});
 
 const initialValues: IRegisterPayload = {
   email: "",
@@ -37,6 +25,18 @@ const initialValues: IRegisterPayload = {
   state: 0,
   gender: EGender.Male,
 };
+
+const RegisterSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().required("Required"),
+  repeatPassword: Yup.string()
+    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
+    .required("Required"),
+  name: Yup.string().required("Required"),
+  region: Yup.number().not([0], "Required").required("Required"),
+  state: Yup.number().not([0], "Required").required("Required"),
+  gender: Yup.string().required("Required"),
+});
 
 export default function RegisterForm({
   loading,
@@ -61,17 +61,7 @@ export default function RegisterForm({
           <ErrorMessage name="name" />
         </FormGroup>
         {/* Gender ---------------------------------------- */}
-        <FormGroup>
-          <FormLabel>Gender</FormLabel>
-          <FormInput component="select" name="gender">
-            {Object.values(EGender).map((item) => (
-              <option key={item} value={item}>
-                {capitalize(item)}
-              </option>
-            ))}
-          </FormInput>
-          <ErrorMessage name="gender" />
-        </FormGroup>
+        <GenderSelector />
         {/* Location -------------------------------------- */}
         <LocationSelector />
         {/* Password -------------------------------- */}
