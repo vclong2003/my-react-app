@@ -17,3 +17,10 @@ export const saveUserToken = (token: string) => {
 export const getUserToken = (): string | null => {
   return localStorage.getItem(EStorageKeys.USER_TOKEN);
 };
+
+/**
+ * Removes the user cookie from the local storage.
+ */
+export const removeUserToken = () => {
+  localStorage.removeItem(EStorageKeys.USER_TOKEN);
+};
