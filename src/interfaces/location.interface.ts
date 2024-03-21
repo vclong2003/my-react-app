@@ -12,18 +12,18 @@ export interface IState {
   createdAt: string;
 }
 
-export interface IGetCountryResponse {
+export interface IGetCountriesResponse {
   message: string;
   error: boolean;
   code: number;
   data: ICountry[];
 }
 
-export interface IGetStatePayload {
+export interface IGetStatesPayload {
   countryId: number;
 }
 
-export interface IGetStateResponse {
+export interface IGetStatesResponse {
   message: string;
   error: boolean;
   code: number;

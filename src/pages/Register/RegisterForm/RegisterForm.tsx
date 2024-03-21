@@ -23,8 +23,8 @@ const RegisterSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), undefined], "Passwords must match")
     .required("Required"),
   name: Yup.string().required("Required"),
-  region: Yup.number().not([0], "Required").required("Required"),
-  state: Yup.number().not([0], "Required").required("Required"),
+  region: Yup.number().required("Required"),
+  state: Yup.number().required("Required"),
 });
 
 const initialValues: IRegisterPayload = {
@@ -49,26 +49,31 @@ export default function RegisterForm({
       onSubmit={onRegister}
       validationSchema={RegisterSchema}>
       <Form>
+        {/* Email -------------------------------- */}
         <FormGroup>
           <FormLabel>Email</FormLabel>
           <FormInput name="email" type="email" />
           <ErrorMessage name="email" />
         </FormGroup>
+        {/* Password -------------------------------- */}
         <FormGroup>
           <FormLabel>Password</FormLabel>
           <FormInput name="password" type="password" />
           <ErrorMessage name="password" />
         </FormGroup>
+        {/* Repeat Password -------------------------------- */}
         <FormGroup>
           <FormLabel>Repeat Password</FormLabel>
           <FormInput name="repeatPassword" type="password" />
           <ErrorMessage name="repeatPassword" />
         </FormGroup>
+        {/* Name ------------------------------------------ */}
         <FormGroup>
           <FormLabel>Name</FormLabel>
           <FormInput name="name" />
           <ErrorMessage name="name" />
         </FormGroup>
+        {/* Region ----------------------------------------- */}
         <FormGroup>
           <FormLabel>Region</FormLabel>
           <FormInput as="select" name="region" onChange={onChangeCountryInput}>
@@ -81,6 +86,7 @@ export default function RegisterForm({
           </FormInput>
           <ErrorMessage name="region" />
         </FormGroup>
+        {/* State ------------------------------------------ */}
         <FormGroup>
           <FormLabel>State</FormLabel>
           <FormInput as="select" name="state">
