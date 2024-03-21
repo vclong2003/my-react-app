@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import backgroundImage from "../../assets/images/login-background.png";
 import { login } from "../../services/api/auth";
 import { setError, setLoading, setUser } from "../../store/authSlice";
+import { saveUserToken } from "../../utils/storageUtils";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,6 +19,7 @@ export default function Login() {
   const handleLogin = (values: ILoginPayload) => {
     login(values)
       .then((response) => {
+        saveUserToken(response.data.token);
         dispatch(setUser(response.data));
       })
       .catch((error) => {

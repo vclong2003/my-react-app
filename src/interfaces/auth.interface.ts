@@ -1,17 +1,20 @@
-export interface IUser {
-  profile_id: string;
-  login: string;
-  firstName: string;
-  lastName: string;
-  dateOfLoginAttempt: string;
-  countOfLoginAttempts: string;
-  forceChangePassword: string;
-}
-
 export enum EGender {
   Male = "male",
   Female = "female",
   Other = "other",
+}
+
+export interface IUser {
+  id: number;
+  email: string;
+  name: string;
+  gender: EGender;
+  avatar: string | null;
+  region: number;
+  state: number;
+  description: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IAuthState {
@@ -25,7 +28,7 @@ export interface IGetCurrentUserResponse {
   message: string;
   error: boolean;
   code: number;
-  data: IUser;
+  data: IUser & { token: string };
 }
 
 // Login ------------------------------------------------
@@ -35,11 +38,10 @@ export interface ILoginPayload {
 }
 
 export interface ILoginResponse {
-  user: IUser | false;
-  errors: { email: string } | false;
-  success: boolean;
-  data: any[];
-  user_cookie: string;
+  message: string;
+  error: boolean;
+  code: number;
+  data: IUser & { token: string };
 }
 
 // Register ------------------------------------------------
@@ -56,17 +58,5 @@ export interface IRegisterResponse {
   message: string;
   error: boolean;
   code: number;
-  data: {
-    id: number;
-    email: string;
-    name: string;
-    gender: EGender;
-    avatar: string | null;
-    region: number;
-    state: number;
-    description: string | null;
-    createdAt: string;
-    updatedAt: string;
-    token: string;
-  };
+  data: IUser & { token: string };
 }

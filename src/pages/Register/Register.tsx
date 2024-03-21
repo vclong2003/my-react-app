@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { setError, setLoading, setUser } from "../../store/authSlice";
 import { Navigate } from "react-router-dom";
+import { saveUserToken } from "../../utils/storageUtils";
 
 export default function Register() {
   const { loading, error, user } = useSelector(
@@ -19,6 +20,7 @@ export default function Register() {
     dispatch(setLoading(true));
     register(values)
       .then((response) => {
+        saveUserToken(response.data.token);
         dispatch(setUser(response.data));
       })
       .catch((error) => {

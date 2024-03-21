@@ -1,12 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export default function Home() {
-  const navigate = useNavigate();
+  const { user } = useSelector((state: RootState) => state.authSlice);
 
   return (
     <div>
       <h1>Home</h1>
-      <button onClick={() => navigate("/login")}>Test go to login</button>
+      <h2>Welcome, {user?.name}!</h2>
     </div>
   );
 }
