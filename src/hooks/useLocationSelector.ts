@@ -7,6 +7,7 @@ export default function useLocationSelector() {
 
   useEffect(() => {
     console.log("fetch countries");
+    setRegions([]);
   }, []);
 
   const onChangeCountryInput = (e: ChangeEvent<HTMLInputElement>) => {
