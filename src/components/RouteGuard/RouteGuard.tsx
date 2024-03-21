@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { getUserCookie } from "../../utils/auth.utils";
+import { getUserCookie } from "../../utils/authUtils";
 
 export default function RouteGuard() {
   const navigate = useNavigate();

@@ -9,7 +9,8 @@ import {
 import { EGender, IRegisterPayload } from "../../../interfaces/auth.interface";
 
 import * as Yup from "yup";
-import useLocationSelector from "../../../hooks/useLocationSelector";
+import LocationSelector from "./LocationSelector";
+import { capitalize } from "../../../utils/textUtils";
 
 interface IRegisterButtonProps {
   onRegister: (values: IRegisterPayload) => void;
@@ -23,8 +24,8 @@ const RegisterSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), undefined], "Passwords must match")
     .required("Required"),
   name: Yup.string().required("Required"),
-  region: Yup.number().required("Required"),
-  state: Yup.number().required("Required"),
+  region: Yup.number().not([0], "Required").required("Required"),
+  state: Yup.number().not([0], "Required").required("Required"),
 });
 
 const initialValues: IRegisterPayload = {
@@ -41,8 +42,6 @@ export default function RegisterForm({
   loading,
   onRegister,
 }: IRegisterButtonProps) {
-  const { countries, states, onChangeCountryInput } = useLocationSelector();
-
   return (
     <Formik
       initialValues={initialValues}
@@ -55,6 +54,26 @@ export default function RegisterForm({
           <FormInput name="email" type="email" />
           <ErrorMessage name="email" />
         </FormGroup>
+        {/* Name ------------------------------------------ */}
+        <FormGroup>
+          <FormLabel>Name</FormLabel>
+          <FormInput name="name" />
+          <ErrorMessage name="name" />
+        </FormGroup>
+        {/* Gender ---------------------------------------- */}
+        <FormGroup>
+          <FormLabel>Gender</FormLabel>
+          <FormInput component="select" name="gender">
+            {Object.values(EGender).map((item) => (
+              <option key={item} value={item}>
+                {capitalize(item)}
+              </option>
+            ))}
+          </FormInput>
+          <ErrorMessage name="gender" />
+        </FormGroup>
+        {/* Location -------------------------------------- */}
+        <LocationSelector />
         {/* Password -------------------------------- */}
         <FormGroup>
           <FormLabel>Password</FormLabel>
@@ -67,38 +86,7 @@ export default function RegisterForm({
           <FormInput name="repeatPassword" type="password" />
           <ErrorMessage name="repeatPassword" />
         </FormGroup>
-        {/* Name ------------------------------------------ */}
-        <FormGroup>
-          <FormLabel>Name</FormLabel>
-          <FormInput name="name" />
-          <ErrorMessage name="name" />
-        </FormGroup>
-        {/* Region ----------------------------------------- */}
-        <FormGroup>
-          <FormLabel>Region</FormLabel>
-          <FormInput as="select" name="region" onChange={onChangeCountryInput}>
-            <option value={0}>Select a region</option>
-            {countries.map((country) => (
-              <option key={country.id} value={country.id}>
-                {country.name}
-              </option>
-            ))}
-          </FormInput>
-          <ErrorMessage name="region" />
-        </FormGroup>
-        {/* State ------------------------------------------ */}
-        <FormGroup>
-          <FormLabel>State</FormLabel>
-          <FormInput as="select" name="state">
-            <option value={0}>Select a state</option>
-            {states.map((state) => (
-              <option key={state.id} value={state.id}>
-                {state.name}
-              </option>
-            ))}
-          </FormInput>
-          <ErrorMessage name="state" />
-        </FormGroup>
+
         <FormButton loading={loading} type="submit">
           Register
         </FormButton>

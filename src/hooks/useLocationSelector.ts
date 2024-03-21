@@ -1,20 +1,18 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ICountry, IState } from "../interfaces/location.interface";
 import { getCountries, getSatesByCountryId } from "../services/api/location";
 
 export default function useLocationSelector() {
-  const [countries, setRegions] = useState<ICountry[]>([]);
+  const [countries, setCountries] = useState<ICountry[]>([]);
   const [states, setStates] = useState<IState[]>([]);
 
   useEffect(() => {
     getCountries().then((response) => {
-      setRegions(response.data);
+      setCountries(response.data);
     });
   }, []);
 
-  const onChangeCountryInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const countryId = Number(e.target.value);
-
+  const setCountry = (countryId: number) => {
     if (!countryId) {
       setStates([]);
       console.log("clear states");
@@ -27,5 +25,5 @@ export default function useLocationSelector() {
     });
   };
 
-  return { countries, states, onChangeCountryInput };
+  return { countries, states, setCountry };
 }

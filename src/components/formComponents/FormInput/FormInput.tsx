@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from "react";
 import * as S from "./FormInput.styled";
 
 interface IFormInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  as?: string;
+  component?: string;
 }
 
 export default function FormInput({ ...props }: IFormInputProps) {
