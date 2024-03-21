@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IAuthState } from "../interfaces/auth.interface";
 
 export const name = "authSlice";

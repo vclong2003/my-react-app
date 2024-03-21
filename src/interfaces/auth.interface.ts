@@ -35,7 +35,6 @@ export interface ILoginResponse {
 }
 
 // Register ------------------------------------------------
-
 export interface IRegisterPayload {
   email: string;
   password: string;
