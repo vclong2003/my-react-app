@@ -1,18 +1,31 @@
 import * as S from "./Login.styled";
 import LoginForm from "./LoginForm/LoginForm";
 import { ILoginPayload } from "../../interfaces/auth.interface";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
 import { Navigate } from "react-router-dom";
 
 import backgroundImage from "../../assets/images/login-background.png";
+import { login } from "../../services/api/auth";
+import { setError, setLoading, setUser } from "../../store/authSlice";
 
 export default function Login() {
+  const dispatch = useDispatch<AppDispatch>();
   const { user, loading, error } = useSelector(
     (state: RootState) => state.authSlice
   );
+
   const handleLogin = (values: ILoginPayload) => {
-    console.log(values);
+    login(values)
+      .then((response) => {
+        dispatch(setUser(response.data));
+      })
+      .catch((error) => {
+        dispatch(setError(error.response.data.message));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

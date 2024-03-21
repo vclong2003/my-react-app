@@ -1,5 +1,6 @@
-import { ErrorMessage, useFormikContext } from "formik";
+import { useFormikContext } from "formik";
 import {
+  FormError,
   FormGroup,
   FormInput,
   FormLabel,
@@ -31,7 +32,7 @@ export default function LocationSelector() {
             </option>
           ))}
         </FormInput>
-        <ErrorMessage name="region" />
+        <FormError name="region" />
       </FormGroup>
       {/* State ------------------------------------------ */}
       <FormGroup>
@@ -44,7 +45,7 @@ export default function LocationSelector() {
             </option>
           ))}
         </FormInput>
-        <ErrorMessage name="state" />
+        <FormError name="state" />
       </FormGroup>
     </>
   );

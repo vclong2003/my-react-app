@@ -15,9 +15,17 @@ export enum EGender {
 }
 
 export interface IAuthState {
-  user: IUser | false | null;
+  user: IUser | null;
   loading: boolean;
   error: string | null;
+}
+
+// Get Current User -------------------------------------
+export interface IGetCurrentUserResponse {
+  message: string;
+  error: boolean;
+  code: number;
+  data: IUser;
 }
 
 // Login ------------------------------------------------

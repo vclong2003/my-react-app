@@ -1,5 +1,5 @@
-import { ErrorMessage } from "formik";
 import {
+  FormError,
   FormGroup,
   FormInput,
   FormLabel,
@@ -18,7 +18,7 @@ export default function GenderSelector() {
           </option>
         ))}
       </FormInput>
-      <ErrorMessage name="gender" />
+      <FormError name="gender" />
     </FormGroup>
   );
 }

@@ -30,3 +30,7 @@ export const FormContainer = styled.div`
   flex: 1;
   overflow-y: auto;
 `;
+export const Error = styled.p`
+  color: var(--red);
+  font-size: var(--fs-md);
+`;

@@ -44,5 +44,4 @@ export const Subtitle = styled.h3`
 export const Error = styled.p`
   color: var(--red);
   font-size: var(--fs-md);
-  margin: var(--s-4) 0;
 `;

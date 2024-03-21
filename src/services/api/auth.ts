@@ -1,11 +1,13 @@
 import axios from "axios";
 import {
+  IGetCurrentUserResponse,
   ILoginPayload,
   ILoginResponse,
   IRegisterPayload,
   IRegisterResponse,
 } from "../../interfaces/auth.interface";
 import { API_BASE_URL } from "../../config/api";
+import { axiosInstance } from "../../libs/axios";
 
 export const login = async (
   payload: ILoginPayload
@@ -19,4 +21,9 @@ export const register = async (
 ): Promise<IRegisterResponse> => {
   const response = await axios.post(API_BASE_URL + "/auth/register", payload);
   return response.data as IRegisterResponse;
+};
+
+export const getCurrentUser = async (): Promise<IGetCurrentUserResponse> => {
+  const response = await axiosInstance.get("/user");
+  return response.data as IGetCurrentUserResponse;
 };

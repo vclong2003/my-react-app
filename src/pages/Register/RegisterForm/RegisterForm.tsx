@@ -1,7 +1,8 @@
-import { ErrorMessage, Formik } from "formik";
+import { Formik } from "formik";
 import {
   Form,
   FormButton,
+  FormError,
   FormGroup,
   FormInput,
   FormLabel,
@@ -52,13 +53,13 @@ export default function RegisterForm({
         <FormGroup>
           <FormLabel>Email</FormLabel>
           <FormInput name="email" type="email" />
-          <ErrorMessage name="email" />
+          <FormError name="email" />
         </FormGroup>
         {/* Name ------------------------------------------ */}
         <FormGroup>
           <FormLabel>Name</FormLabel>
           <FormInput name="name" />
-          <ErrorMessage name="name" />
+          <FormError name="name" />
         </FormGroup>
         {/* Gender ---------------------------------------- */}
         <GenderSelector />
@@ -68,17 +69,16 @@ export default function RegisterForm({
         <FormGroup>
           <FormLabel>Password</FormLabel>
           <FormInput name="password" type="password" />
-          <ErrorMessage name="password" />
+          <FormError name="password" />
         </FormGroup>
         {/* Repeat Password -------------------------------- */}
         <FormGroup>
           <FormLabel>Repeat Password</FormLabel>
           <FormInput name="repeatPassword" type="password" />
-          <ErrorMessage name="repeatPassword" />
+          <FormError name="repeatPassword" />
         </FormGroup>
-
         <FormButton loading={loading} type="submit">
-          Register
+          REGISTER
         </FormButton>
       </Form>
     </Formik>
