@@ -1,5 +1,17 @@
+import { Formik } from "formik";
+import {
+  Form,
+  FormButton,
+  FormGroup,
+  FormInput,
+  FormLabel,
+} from "../../../components/formComponents";
 import { EGender, IRegisterPayload } from "../../../interfaces/auth.interface";
-import * as S from "./RegisterForm.styled";
+
+interface IRegisterButtonProps {
+  onRegister: (values: IRegisterPayload) => void;
+  loading: boolean;
+}
 
 const initialValues: IRegisterPayload = {
   email: "",
@@ -11,6 +23,30 @@ const initialValues: IRegisterPayload = {
   gender: EGender.Male,
 };
 
-export default function RegisterForm() {
-  return <S.Form>form</S.Form>;
+export default function RegisterForm({ loading }: IRegisterButtonProps) {
+  return (
+    <Formik>
+      <Form>
+        <FormGroup>
+          <FormLabel>Email</FormLabel>
+          <FormInput name="email" type="email" />
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Password</FormLabel>
+          <FormInput name="password" type="password" />
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Repeat Password</FormLabel>
+          <FormInput name="repeatPassword" type="password" />
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Name</FormLabel>
+          <FormInput name="name" />
+        </FormGroup>
+        <FormButton loading={loading} type="submit">
+          Register
+        </FormButton>
+      </Form>
+    </Formik>
+  );
 }

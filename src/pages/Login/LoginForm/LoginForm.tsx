@@ -1,11 +1,13 @@
 import { ILoginPayload } from "../../../interfaces/auth.interface";
 import { ErrorMessage, Formik } from "formik";
 import * as Yup from "yup";
-import Form from "../../../components/Form/Form";
-import FormInput from "../../../components/Form/FormInput/FormInput";
-import FormGroup from "../../../components/Form/FormGroup/FormGroup";
-import FormButton from "../../../components/Form/FormButton/FormButton";
-import FormLabel from "../../../components/Form/FormLabel/FormLabel";
+import {
+  Form,
+  FormButton,
+  FormGroup,
+  FormInput,
+  FormLabel,
+} from "../../../components/formComponents";
 
 interface ILoginFormProps {
   onLogin: (values: ILoginPayload) => void;
