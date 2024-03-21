@@ -8,7 +8,11 @@ export default function Register() {
     <S.Container>
       <S.BackgroundImage src={backgroundImage} />
       <S.FormContainer>
-        <RegisterForm />
+        <S.Title>Setup Your Account</S.Title>
+        <RegisterForm
+          onRegister={(values) => console.log(values)}
+          loading={false}
+        />
       </S.FormContainer>
     </S.Container>
   );

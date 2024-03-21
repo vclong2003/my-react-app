@@ -23,9 +23,12 @@ const initialValues: IRegisterPayload = {
   gender: EGender.Male,
 };
 
-export default function RegisterForm({ loading }: IRegisterButtonProps) {
+export default function RegisterForm({
+  loading,
+  onRegister,
+}: IRegisterButtonProps) {
   return (
-    <Formik>
+    <Formik initialValues={initialValues} onSubmit={onRegister}>
       <Form>
         <FormGroup>
           <FormLabel>Email</FormLabel>
