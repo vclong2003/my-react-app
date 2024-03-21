@@ -28,4 +28,5 @@ export const Title = styled.h1``;
 export const FormContainer = styled.div`
   padding: var(--s-8) var(--s-20);
   flex: 1;
+  overflow-y: auto;
 `;
