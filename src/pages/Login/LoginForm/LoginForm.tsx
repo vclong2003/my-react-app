@@ -1,11 +1,15 @@
-import * as S from "./LoginForm.styled";
 import { ILoginPayload } from "../../../interfaces/auth.interface";
 import { ErrorMessage, Formik } from "formik";
 import * as Yup from "yup";
+import Form from "../../../components/Form/Form";
+import FormInput from "../../../components/Form/FormInput/FormInput";
+import FormGroup from "../../../components/Form/FormGroup/FormGroup";
+import FormButton from "../../../components/Form/FormButton/FormButton";
+import FormLabel from "../../../components/Form/FormLabel/FormLabel";
 
 interface ILoginFormProps {
   onLogin: (values: ILoginPayload) => void;
-  loading?: boolean;
+  loading: boolean;
 }
 
 const initialValues: ILoginPayload = {
@@ -24,25 +28,25 @@ export default function LoginForm({ onLogin, loading }: ILoginFormProps) {
       initialValues={initialValues}
       onSubmit={(values) => onLogin(values)}
       validationSchema={LoginSchema}>
-      <S.Form>
-        <S.FormGroup>
-          <S.Label>Email</S.Label>
-          <S.Input type="email" name="email" placeholder="Enter your email" />
+      <Form>
+        <FormGroup>
+          <FormLabel>Email</FormLabel>
+          <FormInput type="email" name="email" placeholder="Enter your email" />
           <ErrorMessage name="email" />
-        </S.FormGroup>
-        <S.FormGroup>
-          <S.Label>Password</S.Label>
-          <S.Input
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Password</FormLabel>
+          <FormInput
             type="password"
             name="password"
             placeholder="Enter your password"
           />
           <ErrorMessage name="password" />
-        </S.FormGroup>
-        <S.Button $loading={loading} type="submit">
+        </FormGroup>
+        <FormButton loading={loading} type="submit">
           LOGIN
-        </S.Button>
-      </S.Form>
+        </FormButton>
+      </Form>
     </Formik>
   );
 }
