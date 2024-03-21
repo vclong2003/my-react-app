@@ -22,6 +22,7 @@ export default function Register() {
       .then((response) => {
         saveUserToken(response.data.token);
         dispatch(setUser(response.data));
+        dispatch(setError(null));
       })
       .catch((error) => {
         dispatch(setError(error.response.data.message));

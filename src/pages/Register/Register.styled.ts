@@ -23,7 +23,11 @@ export const BackgroundImage = styled.img`
   }
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-5xl);
+  margin: var(--s-4) 0;
+`;
 
 export const FormContainer = styled.div`
   padding: var(--s-8) var(--s-20);

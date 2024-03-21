@@ -17,16 +17,18 @@ export default function Login() {
   );
 
   const handleLogin = (values: ILoginPayload) => {
+    dispatch(setLoading(true));
     login(values)
       .then((response) => {
         saveUserToken(response.data.token);
         dispatch(setUser(response.data));
+        dispatch(setError(null));
       })
       .catch((error) => {
         dispatch(setError(error.response.data.message));
       })
       .finally(() => {
-        setLoading(false);
+        dispatch(setLoading(false));
       });
   };
 
@@ -36,7 +38,9 @@ export default function Login() {
       <S.BackgroundImage src={backgroundImage} />
       <S.FormContainer>
         <S.Title>Hey,Welcome Back!</S.Title>
-        <S.Subtitle>We are very happy to see you back!</S.Subtitle>
+        <S.RegisterLink to="/register">
+          Don't have an account? Register here
+        </S.RegisterLink>
         <LoginForm onLogin={handleLogin} loading={loading} />
         {error && <S.Error>{error}</S.Error>}
       </S.FormContainer>
