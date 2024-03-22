@@ -1,11 +1,13 @@
-import AppProvider from "./providers/AppProvider";
-import AppRoutes from "./routes/AppRoutes";
+import { Provider } from "react-redux";
+import store from "./store";
+import MainPage from "./components/MainPage/MainPage";
+import "./assets/css/global.css";
 
 function App() {
   return (
-    <AppProvider>
-      <AppRoutes />
-    </AppProvider>
+    <Provider store={store}>
+      <MainPage />
+    </Provider>
   );
 }
 
