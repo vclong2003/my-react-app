@@ -15,7 +15,7 @@ export default function useLocationSelector() {
   const setCountry = (countryId: number) => {
     if (!countryId) {
       setStates([]);
-      console.log("clear states");
+      console.log("No country selected, states cleared.");
       return;
     }
 
