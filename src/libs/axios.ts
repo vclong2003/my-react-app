@@ -11,7 +11,7 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((config) => {
   const token = getUserToken();
-  console.log("token", token);
+  console.log("Token", token);
   if (token) {
     config.headers.Authorization = token;
   }
