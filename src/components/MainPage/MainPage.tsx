@@ -10,18 +10,11 @@ export default function MainPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    if (edited) {
-      dispatch(setWillEdit(false));
-    }
+    if (edited) dispatch(setWillEdit(false));
   }, [edited, dispatch]);
 
-  const handleReset = () => {
-    dispatch(reset());
-  };
-
-  const handleConfirm = () => {
-    dispatch(setWillEdit(true));
-  };
+  const handleReset = () => dispatch(reset());
+  const handleConfirm = () => dispatch(setWillEdit(true));
 
   return (
     <S.Container>
