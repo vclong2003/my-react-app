@@ -16,7 +16,6 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Home</h1>
       <h2>Welcome, {user?.name}!</h2>
       <h2>Email: {user?.email}</h2>
       <h2>Gender: {user?.gender}</h2>
