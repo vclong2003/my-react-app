@@ -8,7 +8,6 @@ import { imageUrl } from "../../utils/dataUtils";
 import { convertDate } from "../../utils/dateUtils";
 import Popup from "../../components/Popup/Popup";
 import { useState } from "react";
-import ReactCrop, { type Crop } from "react-image-crop";
 import ImageCropper from "./ImageCropper/ImageCropper";
 
 export default function Profile() {
@@ -28,7 +27,9 @@ export default function Profile() {
       <Popup
         onClose={() => setIsAvatarPopupOpen(false)}
         show={isAvatarPopupOpen}>
-        <ImageCropper initialImageUrl={imageUrl(user?.avatar || "")} />
+        {isAvatarPopupOpen ? (
+          <ImageCropper initialImageUrl={imageUrl(user?.avatar || "")} />
+        ) : null}
       </Popup>
       <S.Title>Your profile</S.Title>
       <S.LeftContainer>

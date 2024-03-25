@@ -1,6 +1,6 @@
 import ReactCrop, { Crop } from "react-image-crop";
 import * as S from "./ImageCropper.styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IImageCropperProps {
   initialImageUrl: string;

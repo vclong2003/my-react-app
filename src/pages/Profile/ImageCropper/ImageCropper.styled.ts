@@ -4,11 +4,10 @@ import { FormButton } from "../../../components/formComponents";
 export const ImageCropper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
 `;
 
 export const Image = styled.img`
-  max-height: 65vh;
+  max-height: 65vh !important;
   width: auto;
 `;
 
