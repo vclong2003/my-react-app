@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 768px;
   background-color: var(--light-gray);
   border-radius: var(--br-lg);
   padding: var(--s-5);

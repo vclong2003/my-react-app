@@ -12,11 +12,11 @@ export const PopupOverlay = styled.div<IPopupOverlayProps>`
   height: 100%;
   background-color: var(--black-opacity);
   z-index: 10;
-
   display: ${({ $show }) => ($show ? "flex" : "none")};
   flex-direction: row;
-  align-items: center;
+  padding-top: var(--s-10);
   justify-content: center;
+  align-items: flex-start;
 `;
 
 export const PopupContainer = styled.div`
@@ -27,7 +27,7 @@ export const PopupContainer = styled.div`
   margin: 0 var(--s-8);
   background-color: var(--white);
   padding: var(--s-4);
-  border-radius: var(--br-md);
+  border-radius: var(--br-lg);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 `;
@@ -39,12 +39,13 @@ export const PopupHeader = styled.div`
   justify-content: flex-end;
 `;
 
-export const PopupBody = styled.div`
-  width: 100%;
-  overflow-y: auto;
-`;
-
 export const CloseIcon = styled.img`
   width: 24px;
   height: auto;
+  cursor: pointer;
+  margin-bottom: var(--s-3);
+`;
+
+export const PopupBody = styled.div`
+  width: 100%;
 `;

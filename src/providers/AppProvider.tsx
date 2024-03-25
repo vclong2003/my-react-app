@@ -3,7 +3,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../store";
 
+import "react-image-crop/dist/ReactCrop.css";
 import "../assets/css/global.css";
+
 import UserProvider from "./UserProvider";
 
 interface IAppProviderProps {
