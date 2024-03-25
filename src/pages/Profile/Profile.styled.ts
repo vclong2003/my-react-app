@@ -6,11 +6,19 @@ export const Container = styled.div`
   margin: var(--s-4) auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   max-width: 800px;
   background-color: var(--light-gray);
   border-radius: var(--br-lg);
   padding: var(--s-5);
   box-shadow: var(--shadow-lg);
+`;
+
+export const Title = styled.h1`
+  width: 100%;
+  text-align: center;
+  margin-bottom: var(--s-5);
+  color: var(--blue-gray);
 `;
 
 export const LeftContainer = styled.div`
@@ -24,7 +32,7 @@ export const RightContainer = styled.div`
 `;
 
 export const Avatar = styled(BaseAvatar)`
-  padding: 0 var(--s-4);
+  padding: var(--s-2);
 `;
 
 export const LogoutButton = styled.button`
