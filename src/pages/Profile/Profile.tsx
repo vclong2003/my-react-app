@@ -3,6 +3,7 @@ import { AppDispatch, RootState } from "../../store";
 import { convertDate } from "../../utils/dateUtils";
 import { removeUserToken } from "../../utils/storageUtils";
 import { setUser } from "../../store/authSlice";
+import * as S from "./Profile.styled";
 
 export default function Profile() {
   const { user } = useSelector((state: RootState) => state.authSlice);
@@ -14,15 +15,5 @@ export default function Profile() {
     dispatch(setUser(null));
   };
 
-  return (
-    <div>
-      <h2>Welcome, {user?.name}!</h2>
-      <h2>Email: {user?.email}</h2>
-      <h2>Gender: {user?.gender}</h2>
-      <h2>Region: {user?.region}</h2>
-      <h2>State: {user?.state}</h2>
-      {user?.createdAt && <h2>Created at: {convertDate(user.createdAt)}</h2>}
-      <button onClick={handleLogout}>Logout Test</button>
-    </div>
-  );
+  return <S.Container></S.Container>;
 }
