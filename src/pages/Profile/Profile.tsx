@@ -9,12 +9,11 @@ import { convertDate } from "../../utils/dateUtils";
 import Popup from "../../components/Popup/Popup";
 import { useState } from "react";
 import ReactCrop, { type Crop } from "react-image-crop";
+import ImageCropper from "./ImageCropper/ImageCropper";
 
 export default function Profile() {
   const { user } = useSelector((state: RootState) => state.authSlice);
   const dispatch = useDispatch<AppDispatch>();
-
-  const [crop, setCrop] = useState<Crop>();
 
   const [isAvatarPopupOpen, setIsAvatarPopupOpen] = useState(false);
   const onUpdateAvatarClick = () => setIsAvatarPopupOpen(true);
@@ -29,9 +28,7 @@ export default function Profile() {
       <Popup
         onClose={() => setIsAvatarPopupOpen(false)}
         show={isAvatarPopupOpen}>
-        <ReactCrop crop={crop} onChange={(c) => setCrop(c)}>
-          <img src={(user?.avatar && imageUrl(user.avatar)) || ""} />
-        </ReactCrop>
+        <ImageCropper initialImageUrl={imageUrl(user?.avatar || "")} />
       </Popup>
       <S.Title>Your profile</S.Title>
       <S.LeftContainer>

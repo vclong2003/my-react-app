@@ -23,7 +23,6 @@ export const PopupContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 768px;
-  max-height: 80%;
   margin: 0 var(--s-8);
   background-color: var(--white);
   padding: var(--s-4);
@@ -46,6 +45,4 @@ export const CloseIcon = styled.img`
   margin-bottom: var(--s-3);
 `;
 
-export const PopupBody = styled.div`
-  width: 100%;
-`;
+export const PopupBody = styled.div``;

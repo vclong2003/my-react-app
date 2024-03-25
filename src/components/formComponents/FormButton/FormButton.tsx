@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from "react";
 import * as S from "./FormButton.styled";
 
 interface IFormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  loading: boolean;
+  loading?: boolean;
 }
 
 export default function FormButton({
