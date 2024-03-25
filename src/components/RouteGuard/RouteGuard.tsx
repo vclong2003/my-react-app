@@ -9,7 +9,7 @@ export default function RouteGuard() {
 
   useEffect(() => {
     if (!user) navigate("/login");
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <>

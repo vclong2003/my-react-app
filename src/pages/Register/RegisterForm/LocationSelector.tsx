@@ -17,7 +17,7 @@ export default function LocationSelector() {
   useEffect(() => {
     setCountry(values.region);
     setFieldValue("state", 0);
-  }, [values.region]);
+  }, [values.region, setCountry, setFieldValue]);
 
   return (
     <>
