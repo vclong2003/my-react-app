@@ -4,7 +4,7 @@ import { convertDate } from "../../utils/dateUtils";
 import { removeUserToken } from "../../utils/storageUtils";
 import { setUser } from "../../store/authSlice";
 
-export default function Home() {
+export default function Profile() {
   const { user } = useSelector((state: RootState) => state.authSlice);
   const dispatch = useDispatch<AppDispatch>();
 
