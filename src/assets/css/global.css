@@ -13,6 +13,7 @@
   /* Colors ------------------------ */
   --white: #ffffff;
   --black: #000000;
+  --black-opacity: rgba(26, 26, 26, 0.6);
   --red: #ef0000;
   --gold: #f2ba1d;
   --light-gray: #e0dcdc88;

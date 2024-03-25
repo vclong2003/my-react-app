@@ -6,10 +6,15 @@ import * as S from "./Profile.styled";
 import InfoItem from "./InfoItem/InfoItem";
 import { imageUrl } from "../../utils/dataUtils";
 import { convertDate } from "../../utils/dateUtils";
+import Popup from "../../components/Popup/Popup";
+import { useState } from "react";
 
 export default function Profile() {
   const { user } = useSelector((state: RootState) => state.authSlice);
   const dispatch = useDispatch<AppDispatch>();
+
+  const [isAvatarPopupOpen, setIsAvatarPopupOpen] = useState(false);
+  const onUpdateAvatarClick = () => setIsAvatarPopupOpen(true);
 
   const onLogout = () => {
     removeUserToken();
@@ -18,6 +23,11 @@ export default function Profile() {
 
   return (
     <S.Container>
+      <Popup
+        onClose={() => setIsAvatarPopupOpen(false)}
+        show={isAvatarPopupOpen}>
+        test
+      </Popup>
       <S.Title>Your profile</S.Title>
       <S.LeftContainer>
         <InfoItem label="Id" value={user?.id.toString() || ""} />
@@ -32,7 +42,11 @@ export default function Profile() {
         />
       </S.LeftContainer>
       <S.RightContainer>
-        <S.Avatar imageUrl={user?.avatar && imageUrl(user.avatar)} />
+        <S.Avatar
+          imageUrl={user?.avatar && imageUrl(user.avatar)}
+          isUpdateable={true}
+          onUpdateClick={onUpdateAvatarClick}
+        />
         <S.LogoutButton onClick={onLogout}>Logout</S.LogoutButton>
       </S.RightContainer>
     </S.Container>
