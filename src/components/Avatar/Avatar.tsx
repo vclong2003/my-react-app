@@ -2,14 +2,14 @@ import * as S from "./Avatar.styled";
 
 import DummyAvatar from "../../assets/images/avatar_placeholder.png";
 
-interface IAvatarProps {
-  imageUrl: string | null;
+interface IAvatarProps extends JSX.IntrinsicAttributes {
+  imageUrl?: string | null;
 }
 
-export default function Avatar({ imageUrl }: IAvatarProps) {
+export default function Avatar({ imageUrl, ...props }: IAvatarProps) {
   return (
     <S.Avatar>
-      <S.AvatarImage src={imageUrl || DummyAvatar} alt="Avatar" />
+      <S.AvatarImage {...props} src={imageUrl || DummyAvatar} alt="Avatar" />
     </S.Avatar>
   );
 }
