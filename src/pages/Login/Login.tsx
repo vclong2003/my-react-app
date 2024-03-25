@@ -7,29 +7,29 @@ import { Navigate } from "react-router-dom";
 
 import backgroundImage from "../../assets/images/login-background.png";
 import { login } from "../../services/api/auth";
-import { setError, setLoading, setUser } from "../../store/authSlice";
+import { setUser } from "../../store/authSlice";
 import { saveUserToken } from "../../utils/storageUtils";
+import { useState } from "react";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
-  const { user, loading, error } = useSelector(
-    (state: RootState) => state.authSlice
-  );
+  const { user } = useSelector((state: RootState) => state.authSlice);
 
-  const handleLogin = (values: ILoginPayload) => {
-    dispatch(setLoading(true));
-    login(values)
-      .then((response) => {
-        saveUserToken(response.data.token);
-        dispatch(setUser(response.data));
-        dispatch(setError(null));
-      })
-      .catch((error) => {
-        dispatch(setError(error.response.data.message));
-      })
-      .finally(() => {
-        dispatch(setLoading(false));
-      });
+  const [isLoadind, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleLogin = async (values: ILoginPayload) => {
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await login(values);
+      saveUserToken(response.data.token);
+      dispatch(setUser(response.data));
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -41,7 +41,7 @@ export default function Login() {
         <S.RegisterLink to="/register">
           Don't have an account? Register here
         </S.RegisterLink>
-        <LoginForm onLogin={handleLogin} loading={loading} />
+        <LoginForm onLogin={handleLogin} loading={isLoadind} />
         {error && <S.Error>{error}</S.Error>}
       </S.FormContainer>
     </S.Container>
