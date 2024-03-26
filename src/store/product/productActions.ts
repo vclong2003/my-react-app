@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import productService from "../../services/api/product";
-import { IGetProductByIdPayload } from "../../interfaces/product.interface";
+import {
+  ICreateProductPayload,
+  IDeleteProductPayload,
+  IUpdateProductPayload,
+} from "../../interfaces/product.interface";
 
 export const getAllProducts = createAsyncThunk(
   "productSlice/getAllProducts",
@@ -10,10 +14,28 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
-export const getProductById = createAsyncThunk(
-  "productSlice/getProductById",
-  async (payload: IGetProductByIdPayload) => {
-    const response = await productService.getProductById(payload);
-    return response.data;
+export const createProduct = createAsyncThunk(
+  "productSlice/createProduct",
+  async (payload: ICreateProductPayload) => {
+    const response = await productService.createProduct(payload);
+    return response;
+  }
+);
+
+export const updateProduct = createAsyncThunk(
+  "productSlice/updateProduct",
+  async (payload: IUpdateProductPayload) => {
+    const response = await productService.updateProduct(payload);
+    const { id } = payload;
+    return { response, id };
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  "productSlice/deleteProduct",
+  async (payload: IDeleteProductPayload) => {
+    const response = await productService.deleteProduct(payload);
+    const { id } = payload;
+    return { response, id };
   }
 );
