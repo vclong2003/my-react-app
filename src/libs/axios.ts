@@ -19,10 +19,9 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
+  (response) => response.data,
   (error) => {
-    return Promise.reject(error.response.data.message);
+    const message = error?.response?.data?.message || "Something went wrong!";
+    return Promise.reject(message);
   }
 );

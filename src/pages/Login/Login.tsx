@@ -26,7 +26,7 @@ export default function Login() {
       saveUserToken(response.data.token);
       dispatch(setUser(response.data));
     } catch (error) {
-      setError(error);
+      setError(error as string);
     } finally {
       setIsLoading(false);
     }

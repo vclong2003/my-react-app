@@ -6,12 +6,12 @@ import {
 import { axiosInstance } from "../../libs/axios";
 
 export const getCountries = async (): Promise<IGetCountriesResponse> => {
-  const response = await axiosInstance.get("/location");
-  return response.data as IGetCountriesResponse;
+  return await axiosInstance.get<never, IGetCountriesResponse>("/location");
 };
 
 export const getSatesByCountryId = async (payload: IGetStatesPayload) => {
   const { countryId } = payload;
-  const response = await axiosInstance.get(`/location?pid=${countryId}`);
-  return response.data as IGetStatesResponse;
+  return await axiosInstance.get<never, IGetStatesResponse>(
+    `/location?pid=${countryId}`
+  );
 };

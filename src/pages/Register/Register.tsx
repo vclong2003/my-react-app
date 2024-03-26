@@ -6,30 +6,30 @@ import { IRegisterPayload } from "../../interfaces/auth.interface";
 import { register } from "../../services/api/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { setError, setLoading, setUser } from "../../store/authSlice";
+import { setUser } from "../../store/authSlice";
 import { Navigate } from "react-router-dom";
 import { saveUserToken } from "../../utils/storageUtils";
+import { useState } from "react";
 
 export default function Register() {
-  const { loading, error, user } = useSelector(
-    (state: RootState) => state.authSlice
-  );
+  const { user } = useSelector((state: RootState) => state.authSlice);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleRegister = (values: IRegisterPayload) => {
-    dispatch(setLoading(true));
-    register(values)
-      .then((response) => {
-        saveUserToken(response.data.token);
-        dispatch(setUser(response.data));
-        dispatch(setError(null));
-      })
-      .catch((error) => {
-        dispatch(setError(error.response.data.message));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const onRegister = async (values: IRegisterPayload) => {
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await register(values);
+      saveUserToken(response.data.token);
+      dispatch(setUser(response.data));
+    } catch (error) {
+      setError(error as string);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -38,7 +38,7 @@ export default function Register() {
       <S.BackgroundImage src={backgroundImage} />
       <S.FormContainer>
         <S.Title>Setup Your Account</S.Title>
-        <RegisterForm onRegister={handleRegister} loading={loading} />
+        <RegisterForm onRegister={onRegister} loading={isLoading} />
         {error && <S.Error>{error}</S.Error>}
       </S.FormContainer>
     </S.Container>
