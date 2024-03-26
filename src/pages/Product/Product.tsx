@@ -23,11 +23,14 @@ export default function Product() {
   }, [dispatch]);
 
   // Add product -----------------------------------------------------
-  const [isAddProductVisible, setIsAddProductVisible] = useState(true);
+  const [isAddProductVisible, setIsAddProductVisible] = useState(false);
   const onAddProduct = (values: Partial<IProduct>) => {
-    dispatch(createProduct(values as ICreateProductPayload));
+    dispatch(createProduct(values as ICreateProductPayload))
+      .unwrap()
+      .catch((err) => console.log(err.message));
     setIsAddProductVisible(false);
   };
+  const onAddProductClick = () => setIsAddProductVisible(true);
   const onCancelAddProduct = () => setIsAddProductVisible(false);
 
   return (
@@ -37,7 +40,12 @@ export default function Product() {
         onClose={() => setIsAddProductVisible(false)}>
         <ProductForm onSubmit={onAddProduct} onCancel={onCancelAddProduct} />
       </Popup>
-
+      <S.Header>
+        <h1>Products</h1>
+        <S.AddProductBtn onClick={onAddProductClick}>
+          Add Product
+        </S.AddProductBtn>
+      </S.Header>
       <UpdateProductPopup />
       <S.Container>
         <ProductTable />
