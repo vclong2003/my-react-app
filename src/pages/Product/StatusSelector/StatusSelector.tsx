@@ -10,6 +10,7 @@ export default function ProductStatusSelector() {
     <FormGroup>
       <FormLabel>Status</FormLabel>
       <FormInput component="select" name="status" placeholder="Status">
+        <option value="">Select Status</option>
         {Object.values(EProductStatus).map((item) => (
           <option key={item} value={item}>
             {item}

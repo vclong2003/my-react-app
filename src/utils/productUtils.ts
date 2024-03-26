@@ -18,9 +18,9 @@ export const filterProducts = (
   if (!filter) return products;
   return products.filter((product) => {
     return (
-      product.status.includes(filter.status) &&
-      product.client.includes(filter.client) &&
-      product.invoice.includes(filter.invoice) &&
+      (!filter.status || product.status.includes(filter.status)) &&
+      (!filter.client || product.client.includes(filter.client)) &&
+      (!filter.invoice || product.invoice.includes(filter.invoice)) &&
       (!filter.from || product.createdAt >= new Date(filter.from)) &&
       (!filter.to || product.createdAt <= new Date(filter.to))
     );
