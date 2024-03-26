@@ -22,6 +22,8 @@ export interface IProduct {
 export interface IProductState {
   products: IProduct[];
   isLoading: boolean;
+  isUpdating: boolean;
+  isDeleting: boolean;
   error: string | null;
 }
 
@@ -45,10 +47,12 @@ export interface IGetProductByIdResponse {
 
 export interface ICreateProductPayload {
   order: string;
-  status: string;
+  client: string;
+  status: EProductStatus;
   total: number;
   currency: string;
   fundingMethod: string;
+  invoice: string;
 }
 
 export interface ICreateProductResponse {
@@ -60,10 +64,12 @@ export interface ICreateProductResponse {
 export interface IUpdateProductPayload {
   id: number;
   order: string;
-  status: string;
+  client: string;
+  status: EProductStatus;
   total: number;
   currency: string;
   fundingMethod: string;
+  invoice: string;
 }
 
 export interface IUpdateProductResponse {

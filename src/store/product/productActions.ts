@@ -10,6 +10,7 @@ export const getAllProducts = createAsyncThunk(
   "productSlice/getAllProducts",
   async () => {
     const response = await productService.getAllProducts();
+    console.log(response);
     return response.data;
   }
 );
@@ -17,17 +18,19 @@ export const getAllProducts = createAsyncThunk(
 export const createProduct = createAsyncThunk(
   "productSlice/createProduct",
   async (payload: ICreateProductPayload) => {
-    const response = await productService.createProduct(payload);
-    return response;
+    await productService.createProduct(payload);
+    const getAllProductsResponse = await productService.getAllProducts();
+    return getAllProductsResponse.data;
   }
 );
 
 export const updateProduct = createAsyncThunk(
   "productSlice/updateProduct",
   async (payload: IUpdateProductPayload) => {
-    const response = await productService.updateProduct(payload);
+    await productService.updateProduct(payload);
     const { id } = payload;
-    return { response, id };
+    const getProductByIdResponse = await productService.getProductById({ id });
+    return getProductByIdResponse.data;
   }
 );
 

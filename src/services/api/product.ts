@@ -12,7 +12,7 @@ import {
 import { axiosInstance } from "../../libs/axios";
 
 const getAllProducts = async (): Promise<IGetAllProductsResponse> => {
-  return await axiosInstance.get("/products");
+  return await axiosInstance.get("/product");
 };
 
 const getProductById = async (
