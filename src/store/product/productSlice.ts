@@ -9,13 +9,18 @@ import {
 
 const name = "productSlice";
 const initialState: IProductState = {
+  selectedProduct: null,
   products: [],
 };
 
 const productSlice = createSlice({
   name,
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedProduct(state, action) {
+      state.selectedProduct = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // States of getAllProducts-------------------------
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
@@ -44,3 +49,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice;
+export const { setSelectedProduct } = productSlice.actions;

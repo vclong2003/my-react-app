@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Home = styled.div`
+export const Product = styled.div`
   display: flex;
   justify-content: center;
   padding: var(--s-5) var(--s-10);

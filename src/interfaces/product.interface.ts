@@ -20,6 +20,7 @@ export interface IProduct {
 }
 
 export interface IProductState {
+  selectedProduct: IProduct | null;
   products: IProduct[];
 }
 

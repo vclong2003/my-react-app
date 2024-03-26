@@ -4,6 +4,7 @@ import { AppDispatch } from "../../store";
 import { useEffect } from "react";
 import { getAllProducts } from "../../store/product/productActions";
 import ProductTable from "./ProductTable/ProductTable";
+import ProductForm from "./ProductForm/ProductForm";
 
 export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,10 +14,11 @@ export default function Product() {
   }, [dispatch]);
 
   return (
-    <S.Home>
+    <S.Product>
       <S.Container>
         <ProductTable />
       </S.Container>
-    </S.Home>
+      <ProductForm />
+    </S.Product>
   );
 }
