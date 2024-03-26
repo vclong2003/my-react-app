@@ -18,12 +18,18 @@ export default function UpdateProductPopup() {
   const onCLose = () => dispatch(setSelectedProduct(null));
 
   const onUpdate = (values: Partial<IProduct>) => {
-    dispatch(updateProduct(values as IUpdateProductPayload));
+    dispatch(updateProduct(values as IUpdateProductPayload))
+      .unwrap()
+      .catch((err) => console.log(err.message));
   };
 
   return (
     <Popup show={selectedProduct !== null} onClose={onCLose}>
-      <ProductForm product={selectedProduct!} onSubmit={onUpdate} />
+      <ProductForm
+        product={selectedProduct!}
+        onSubmit={onUpdate}
+        onCancel={onCLose}
+      />
     </Popup>
   );
 }
