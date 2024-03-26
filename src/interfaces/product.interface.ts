@@ -1,6 +1,13 @@
+export enum EProductStatus {
+  Pending = "PENDING",
+  Processing = "PROCESSING",
+  Fulfilled = "FULFILLED",
+  Received = "RECEIVED",
+}
+
 export interface IProduct {
   id: number;
-  status: string;
+  status: EProductStatus;
   currency: string;
   fundingMethod: string;
   total: number;
