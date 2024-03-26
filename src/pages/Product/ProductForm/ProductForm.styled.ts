@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { FormButton } from "../../../components/formComponents";
+import { Formik, Form as FormikForm } from "formik";
 
-export const Form = styled.form``;
+export const ProductForm = styled(Formik)``;
+
+export const Form = styled(FormikForm)`
+  width: 576px;
+`;
 
 export const BtnsContainer = styled.div`
   display: flex;

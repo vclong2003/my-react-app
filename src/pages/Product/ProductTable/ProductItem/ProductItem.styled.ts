@@ -24,7 +24,7 @@ export const DeleteBtn = styled.button`
   cursor: pointer;
 `;
 
-export const ViewDetailBtn = styled.button`
+export const EditBtn = styled.button`
   background-color: transparent;
   border: 2px solid var(--gold);
   color: var(--gold);

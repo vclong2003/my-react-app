@@ -38,6 +38,7 @@ const productSlice = createSlice({
       state.products = state.products.map((product) =>
         product.id === updatedProduct.id ? updatedProduct : product
       );
+      state.selectedProduct = null;
     });
 
     // States of deleteProduct---------------------------

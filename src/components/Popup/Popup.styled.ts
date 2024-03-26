@@ -22,7 +22,6 @@ const PopupContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 768px;
-  max-height: 80%;
   margin: 0 var(--s-8);
   background-color: var(--white);
   padding: var(--s-4);
@@ -40,7 +39,6 @@ const PopupHeader = styled.div`
 
 const PopupBody = styled.div`
   width: 100%;
-  overflow-y: auto;
 `;
 
 const CloseButton = styled.button`

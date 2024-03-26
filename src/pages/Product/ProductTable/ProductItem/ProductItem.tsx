@@ -5,6 +5,7 @@ import { AppDispatch } from "../../../../store";
 import { IProduct } from "../../../../interfaces/product.interface";
 import { deleteProduct } from "../../../../store/product/productActions";
 import { convertDate } from "../../../../utils/dateUtils";
+import { setSelectedProduct } from "../../../../store/product/productSlice";
 
 interface IProductItemProps {
   product: IProduct;
@@ -16,6 +17,7 @@ export default function ProductItem({ product }: IProductItemProps) {
   const { id } = product;
 
   const onDelete = () => dispatch(deleteProduct({ id }));
+  const onEdit = () => dispatch(setSelectedProduct(product));
 
   return (
     <S.ProductItem>
@@ -26,7 +28,7 @@ export default function ProductItem({ product }: IProductItemProps) {
       <S.TableCell>{product.total}</S.TableCell>
       <S.TableCell>{product.invoice}</S.TableCell>
       <S.ActionBtnsCell>
-        <S.ViewDetailBtn>Detail</S.ViewDetailBtn>
+        <S.EditBtn onClick={onEdit}>Edit</S.EditBtn>
         <S.DeleteBtn onClick={onDelete}>
           <DeleteIcon />
         </S.DeleteBtn>

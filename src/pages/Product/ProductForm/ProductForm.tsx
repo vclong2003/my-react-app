@@ -1,4 +1,3 @@
-import { Formik } from "formik";
 import {
   EProductStatus,
   IProduct,
@@ -11,6 +10,12 @@ import {
   FormLabel,
 } from "../../../components/formComponents";
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
+import ProductFormUpdater from "./ProductFormUpdater";
+
+interface IProductFormProps {
+  onSubmit: (values: Partial<IProduct>) => void;
+  product?: IProduct;
+}
 
 const initialValues: Partial<IProduct> = {
   order: "",
@@ -21,14 +26,16 @@ const initialValues: Partial<IProduct> = {
   fundingMethod: "",
 };
 
-export default function ProductForm() {
-  const onSubmit = (values: Partial<IProduct>) => {
-    console.log(values);
+export default function ProductForm({ product, onSubmit }: IProductFormProps) {
+  const handleSubmit = (values: Partial<IProduct>) => {
+    if (product) return onSubmit({ id: product.id, ...values });
+    return onSubmit(values);
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <S.ProductForm initialValues={initialValues} onSubmit={handleSubmit}>
       <S.Form>
+        <ProductFormUpdater product={product} />
         {/* Order name --------------------------- */}
         <FormGroup>
           <FormLabel>Order</FormLabel>
@@ -67,6 +74,6 @@ export default function ProductForm() {
           <S.CancelButton type="button">Cancel</S.CancelButton>
         </S.BtnsContainer>
       </S.Form>
-    </Formik>
+    </S.ProductForm>
   );
 }
