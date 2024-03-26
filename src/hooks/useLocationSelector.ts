@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 
 import { ICountry, IState } from "../interfaces/location.interface";
 
-import { getCountries, getSatesByCountryId } from "../services/api/location";
+import locationService from "../services/api/location";
 
 export default function useLocationSelector() {
   const [countries, setCountries] = useState<ICountry[]>([]);
   const [states, setStates] = useState<IState[]>([]);
 
   useEffect(() => {
-    getCountries().then((response) => {
+    locationService.getCountries().then((response) => {
       setCountries(response.data);
     });
   }, []);
@@ -20,7 +20,7 @@ export default function useLocationSelector() {
       return;
     }
 
-    getSatesByCountryId({ countryId }).then((response) => {
+    locationService.getSatesByCountryId({ countryId }).then((response) => {
       setStates(response.data);
     });
   };

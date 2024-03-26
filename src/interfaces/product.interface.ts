@@ -12,6 +12,12 @@ export interface IProduct {
   updatedAt: Date;
 }
 
+export interface IProductState {
+  products: IProduct[];
+  isLoading: boolean;
+  error: string | null;
+}
+
 export interface IGetAllProductsResponse {
   message: string;
   error: boolean;

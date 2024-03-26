@@ -19,6 +19,8 @@ export interface IUser {
 
 export interface IAuthState {
   user: IUser | null;
+  isLoading: boolean;
+  error: string | null;
 }
 
 // Get Current User -------------------------------------

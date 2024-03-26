@@ -2,37 +2,21 @@ import * as S from "./Register.styled";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import backgroundImage from "../../assets/images/register_bg.png";
 
-import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "../../store";
 import { IRegisterPayload } from "../../interfaces/auth.interface";
 
-import { register } from "../../services/api/auth";
-import { setUser } from "../../store/authSlice";
-import { saveUserToken } from "../../utils/storageUtils";
+import { register } from "../../store/auth/authActions";
 
 export default function Register() {
-  const { user } = useSelector((state: RootState) => state.authSlice);
+  const { user, isLoading, error } = useSelector(
+    (state: RootState) => state.authSlice
+  );
   const dispatch = useDispatch<AppDispatch>();
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const onRegister = async (values: IRegisterPayload) => {
-    setIsLoading(true);
-    setError("");
-    try {
-      const response = await register(values);
-      saveUserToken(response.data.token);
-      dispatch(setUser(response.data));
-    } catch (error) {
-      setError(error as string);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const onRegister = (values: IRegisterPayload) => dispatch(register(values));
 
   return (
     <S.Container>
