@@ -9,11 +9,10 @@ export const TableCell = styled(MuiTableCell)`
   font-size: var(--fs-md);
 `;
 
-export const ActionBtnsCell = styled(MuiTableCell)`
+export const ActionBtnsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  gap: var(--s-6);
+  gap: var(--s-2);
 `;
 
 export const DeleteBtn = styled.button`

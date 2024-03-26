@@ -27,12 +27,14 @@ export default function ProductItem({ product }: IProductItemProps) {
       <S.TableCell>{product.currency}</S.TableCell>
       <S.TableCell>{product.total}</S.TableCell>
       <S.TableCell>{product.invoice}</S.TableCell>
-      <S.ActionBtnsCell>
-        <S.EditBtn onClick={onEdit}>Edit</S.EditBtn>
-        <S.DeleteBtn onClick={onDelete}>
-          <DeleteIcon />
-        </S.DeleteBtn>
-      </S.ActionBtnsCell>
+      <S.TableCell>
+        <S.ActionBtnsContainer>
+          <S.EditBtn onClick={onEdit}>Edit</S.EditBtn>
+          <S.DeleteBtn onClick={onDelete}>
+            <DeleteIcon />
+          </S.DeleteBtn>
+        </S.ActionBtnsContainer>
+      </S.TableCell>
     </S.ProductItem>
   );
 }

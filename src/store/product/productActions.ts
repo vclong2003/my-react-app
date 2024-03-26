@@ -5,6 +5,7 @@ import {
   IDeleteProductPayload,
   IUpdateProductPayload,
 } from "../../interfaces/product.interface";
+import { v4 as uuidv4 } from "uuid";
 
 export const getAllProducts = createAsyncThunk(
   "productSlice/getAllProducts",
@@ -17,7 +18,8 @@ export const getAllProducts = createAsyncThunk(
 export const createProduct = createAsyncThunk(
   "productSlice/createProduct",
   async (payload: ICreateProductPayload) => {
-    await productService.createProduct(payload);
+    const invoice = uuidv4();
+    await productService.createProduct({ ...payload, invoice });
     const getAllProductsResponse = await productService.getAllProducts();
     return getAllProductsResponse.data;
   }
