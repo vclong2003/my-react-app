@@ -12,9 +12,5 @@ export default function RouteGuard() {
     if (!user) navigate("/login");
   }, [user, navigate]);
 
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }

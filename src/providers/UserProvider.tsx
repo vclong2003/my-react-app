@@ -1,8 +1,10 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
 import { AppDispatch } from "../store";
+
 import { getCurrentUser } from "../services/api/auth";
-import { setLoading, setUser } from "../store/authSlice";
+import { setUser } from "../store/authSlice";
 
 interface IUserProviderProps {
   children: ReactNode;
@@ -11,21 +13,18 @@ interface IUserProviderProps {
 export default function UserProvider({ children }: IUserProviderProps) {
   const dispatch = useDispatch<AppDispatch>();
 
+  const fetchUser = useCallback(async () => {
+    try {
+      const user = await getCurrentUser();
+      dispatch(setUser(user));
+    } catch (error) {
+      console.error("Error fetching user", error);
+    }
+  }, [dispatch]);
+
   useEffect(() => {
     fetchUser();
-  }, []);
-
-  const fetchUser = async () => {
-    dispatch(setLoading(true));
-    try {
-      const response = await getCurrentUser();
-      dispatch(setUser(response.data));
-    } catch (error) {
-      console.error(error);
-    } finally {
-      dispatch(setLoading(false));
-    }
-  };
+  }, [fetchUser]);
 
   return children;
 }
