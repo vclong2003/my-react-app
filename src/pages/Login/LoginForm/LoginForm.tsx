@@ -1,13 +1,16 @@
-import { ILoginPayload } from "../../../interfaces/auth.interface";
-import { ErrorMessage, Formik } from "formik";
-import * as Yup from "yup";
+import { Formik } from "formik";
 import {
   Form,
   FormButton,
+  FormError,
   FormGroup,
   FormInput,
   FormLabel,
 } from "../../../components/formComponents";
+
+import { ILoginPayload } from "../../../interfaces/auth.interface";
+
+import { loginSchema } from "../../../utils/authUtils";
 
 interface ILoginFormProps {
   onLogin: (values: ILoginPayload) => void;
@@ -19,22 +22,17 @@ const initialValues: ILoginPayload = {
   password: "",
 };
 
-const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email!").required("Required!"),
-  password: Yup.string().min(8, "Too short!").required("Required!"),
-});
-
 export default function LoginForm({ onLogin, loading }: ILoginFormProps) {
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => onLogin(values)}
-      validationSchema={LoginSchema}>
+      validationSchema={loginSchema()}>
       <Form>
         <FormGroup>
           <FormLabel>Email</FormLabel>
           <FormInput type="email" name="email" placeholder="Enter your email" />
-          <ErrorMessage name="email" />
+          <FormError name="email" />
         </FormGroup>
         <FormGroup>
           <FormLabel>Password</FormLabel>
@@ -43,7 +41,7 @@ export default function LoginForm({ onLogin, loading }: ILoginFormProps) {
             name="password"
             placeholder="Enter your password"
           />
-          <ErrorMessage name="password" />
+          <FormError name="password" />
         </FormGroup>
         <FormButton loading={loading} type="submit">
           LOGIN

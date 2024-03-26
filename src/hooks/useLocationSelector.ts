@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { ICountry, IState } from "../interfaces/location.interface";
+
 import { getCountries, getSatesByCountryId } from "../services/api/location";
 
 export default function useLocationSelector() {
