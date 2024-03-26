@@ -3,20 +3,21 @@ import TableRow from "./TableRow/TableRow";
 
 const mockData = ["Mock A", "Mock B", "Mock C", "Mock D", "Mock E", "Mock F"];
 
+const header = [
+  "Status",
+  "Date",
+  "Client",
+  "Currency",
+  "Total",
+  "Invoice #",
+  "",
+];
+
 export default function Table() {
   return (
     <S.Table>
       <S.TableHead>
-        <TableRow
-          data={[
-            "Header A",
-            "Header B",
-            "Header C",
-            "Header D",
-            "Header E",
-            "Header F",
-          ]}
-        />
+        <TableRow isHeader={true} data={header} />
       </S.TableHead>
       <S.TableBody>
         <TableRow data={mockData} />

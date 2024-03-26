@@ -5,4 +5,11 @@ import { TableCell as MuiTableCell } from "@mui/material";
 
 export const TableRow = styled(MuiTableRow)``;
 
-export const TableCell = styled(MuiTableCell)``;
+interface ITableCellProps {
+  $isHeader?: boolean;
+}
+
+export const TableCell = styled(MuiTableCell)<ITableCellProps>`
+  font-size: var(--fs-md);
+  ${({ $isHeader }) => $isHeader && `font-weight: var(--fw-bold);`};
+`;

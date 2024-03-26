@@ -3,12 +3,11 @@ import styled from "styled-components";
 export const Home = styled.div`
   display: flex;
   justify-content: center;
-  padding: var(--s-5);
+  padding: var(--s-5) var(--s-10);
 `;
 
 export const Container = styled.div`
-  padding: var(--s-4);
-  max-width: 768px;
+  width: 100%;
   background-color: var(--light-gray);
-  border-radius: var(--br-md);
+  overflow: hidden;
 `;
