@@ -22,8 +22,8 @@ export interface IProduct {
 export interface IProductFilters {
   status: EProductStatus | "";
   client: string | "";
-  from: Date | null;
-  to: Date | null;
+  from: Date | "";
+  to: Date | "";
   invoice: string | "";
 }
 

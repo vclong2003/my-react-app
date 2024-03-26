@@ -23,5 +23,7 @@ export const Header = styled.div`
 `;
 
 export const AddProductBtn = styled(FormButton)`
-  margin: 0;
+  margin-right: auto;
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-lg);
 `;

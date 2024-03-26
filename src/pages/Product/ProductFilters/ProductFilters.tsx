@@ -1,14 +1,14 @@
-import { FormGroup } from "@mui/material";
 import { IProductFilters } from "../../../interfaces/product.interface";
 import * as S from "./ProductFilters.styled";
 import { FormInput, FormLabel } from "../../../components/formComponents";
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
+import { FormGroup } from "../../../components/formComponents/FormGroup/FormGroup.styled";
 
 const intitialValues: IProductFilters = {
   status: "",
   client: "",
-  from: null,
-  to: null,
+  from: "",
+  to: "",
   invoice: "",
 };
 
@@ -36,6 +36,12 @@ export default function ProductFilters({ onApply }: IProductFiltersProps) {
         <FormGroup>
           <FormLabel>Invoice</FormLabel>
           <FormInput name="invoice" />
+        </FormGroup>
+        <FormGroup>
+          <S.ApplyButton type="submit">Apply</S.ApplyButton>
+        </FormGroup>
+        <FormGroup>
+          <S.CancelButton type="reset">Cancel</S.CancelButton>
         </FormGroup>
       </S.Form>
     </S.ProductFilter>

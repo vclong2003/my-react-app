@@ -41,11 +41,13 @@ export default function Product() {
         onClose={() => setIsAddProductVisible(false)}>
         <ProductForm onSubmit={onAddProduct} onCancel={onCancelAddProduct} />
       </Popup>
+      <S.AddProductBtn onClick={onAddProductClick}>Add Product</S.AddProductBtn>
       <S.Header>
-        <ProductFilters onApply={() => {}} />
-        <S.AddProductBtn onClick={onAddProductClick}>
-          Add Product
-        </S.AddProductBtn>
+        <ProductFilters
+          onApply={(values) => {
+            console.log(values);
+          }}
+        />
       </S.Header>
       <UpdateProductPopup />
       <S.Container>
