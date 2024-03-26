@@ -10,7 +10,6 @@ export const getAllProducts = createAsyncThunk(
   "productSlice/getAllProducts",
   async () => {
     const response = await productService.getAllProducts();
-    console.log(response);
     return response.data;
   }
 );

@@ -3,6 +3,6 @@
  * @param date
  * @returns
  */
-export const convertDate = (date: string): string => {
+export const convertDate = (date: string | Date): string => {
   return new Date(date).toLocaleString();
 };
