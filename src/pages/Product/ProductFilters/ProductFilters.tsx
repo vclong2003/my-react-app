@@ -1,10 +1,13 @@
-import { IProductFilters } from "../../../interfaces/product.interface";
+import { IProductFilter } from "../../../interfaces/product.interface";
 import * as S from "./ProductFilters.styled";
 import { FormInput, FormLabel } from "../../../components/formComponents";
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
 import { FormGroup } from "../../../components/formComponents/FormGroup/FormGroup.styled";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store";
+import { setFilter } from "../../../store/product/productSlice";
 
-const intitialValues: IProductFilters = {
+const intitialValues: IProductFilter = {
   status: "",
   client: "",
   from: "",
@@ -12,13 +15,17 @@ const intitialValues: IProductFilters = {
   invoice: "",
 };
 
-interface IProductFiltersProps {
-  onApply: (values: IProductFilters) => void;
-}
+export default function ProductFilters() {
+  const dispatch = useDispatch<AppDispatch>();
 
-export default function ProductFilters({ onApply }: IProductFiltersProps) {
+  const onSubmit = (values: IProductFilter) => dispatch(setFilter(values));
+  const onReset = () => dispatch(setFilter(null));
+
   return (
-    <S.ProductFilter initialValues={intitialValues} onSubmit={onApply}>
+    <S.ProductFilter
+      initialValues={intitialValues}
+      onReset={onReset}
+      onSubmit={onSubmit}>
       <S.Form>
         <ProductStatusSelector />
         <FormGroup>
@@ -41,7 +48,7 @@ export default function ProductFilters({ onApply }: IProductFiltersProps) {
           <S.ApplyButton type="submit">Apply</S.ApplyButton>
         </FormGroup>
         <FormGroup>
-          <S.CancelButton type="reset">Cancel</S.CancelButton>
+          <S.ResetButton type="reset">Reset</S.ResetButton>
         </FormGroup>
       </S.Form>
     </S.ProductFilter>

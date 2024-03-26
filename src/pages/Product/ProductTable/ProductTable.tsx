@@ -3,6 +3,7 @@ import * as S from "./ProductTable.styled";
 import { RootState } from "../../../store";
 import ProductItem from "./ProductItem/ProductItem";
 import ProductTableHeader from "./ProductTableHeader/ProductTableHeader";
+import { filterProducts } from "../../../utils/productUtils";
 
 const HEADER = [
   "Status",
@@ -15,7 +16,9 @@ const HEADER = [
 ];
 
 export default function ProductTable() {
-  const { products } = useSelector((state: RootState) => state.productSlice);
+  const { products, filter } = useSelector(
+    (state: RootState) => state.productSlice
+  );
 
   return (
     <S.Table>
@@ -23,7 +26,7 @@ export default function ProductTable() {
         <ProductTableHeader columns={HEADER} />
       </S.TableHead>
       <S.TableBody>
-        {products.map((product) => (
+        {filterProducts(products, filter).map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </S.TableBody>

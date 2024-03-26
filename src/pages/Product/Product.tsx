@@ -43,11 +43,7 @@ export default function Product() {
       </Popup>
       <S.AddProductBtn onClick={onAddProductClick}>Add Product</S.AddProductBtn>
       <S.Header>
-        <ProductFilters
-          onApply={(values) => {
-            console.log(values);
-          }}
-        />
+        <ProductFilters />
       </S.Header>
       <UpdateProductPopup />
       <S.Container>

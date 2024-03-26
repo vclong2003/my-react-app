@@ -8,7 +8,7 @@ export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  gap: var(--s-3);
+  gap: var(--s-2);
 `;
 
 export const ApplyButton = styled(FormButton)`
@@ -17,8 +17,8 @@ export const ApplyButton = styled(FormButton)`
   margin: 0;
 `;
 
-export const CancelButton = styled(FormButton)`
-  background-color: var(--ice-blue);
+export const ResetButton = styled(FormButton)`
+  background-color: var(--light-gray-1);
   font-weight: var(--fw-normal);
   font-size: var(--fs-lg);
   margin: 0;

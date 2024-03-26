@@ -11,6 +11,8 @@ export const Container = styled.div`
   width: 100%;
   background-color: var(--light-gray);
   overflow: hidden;
+  padding: var(--s-3);
+  border-radius: var(--br-md);
 `;
 
 export const Header = styled.div`

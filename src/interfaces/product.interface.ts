@@ -19,7 +19,7 @@ export interface IProduct {
   updatedAt: Date;
 }
 
-export interface IProductFilters {
+export interface IProductFilter {
   status: EProductStatus | "";
   client: string | "";
   from: Date | "";
@@ -30,6 +30,7 @@ export interface IProductFilters {
 export interface IProductState {
   selectedProduct: IProduct | null;
   products: IProduct[];
+  filter: IProductFilter | null;
 }
 
 export interface IGetAllProductsResponse {

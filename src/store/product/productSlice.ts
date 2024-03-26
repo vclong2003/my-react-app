@@ -11,6 +11,7 @@ const name = "productSlice";
 const initialState: IProductState = {
   selectedProduct: null,
   products: [],
+  filter: null,
 };
 
 const productSlice = createSlice({
@@ -19,6 +20,9 @@ const productSlice = createSlice({
   reducers: {
     setSelectedProduct(state, action) {
       state.selectedProduct = action.payload;
+    },
+    setFilter(state, action) {
+      state.filter = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -50,4 +54,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice;
-export const { setSelectedProduct } = productSlice.actions;
+export const { setSelectedProduct, setFilter } = productSlice.actions;
