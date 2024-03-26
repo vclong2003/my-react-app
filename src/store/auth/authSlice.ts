@@ -3,7 +3,7 @@ import { IAuthState } from "../../interfaces/auth.interface";
 import { getCurrentUser, login, register } from "./authActions";
 import { saveUserToken } from "../../utils/storageUtils";
 
-export const name = "authSlice";
+const name = "authSlice";
 const initialState: IAuthState = {
   user: null,
   isLoading: false,
