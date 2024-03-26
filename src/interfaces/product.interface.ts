@@ -21,10 +21,6 @@ export interface IProduct {
 
 export interface IProductState {
   products: IProduct[];
-  isLoading: boolean;
-  isUpdating: boolean;
-  isDeleting: boolean;
-  error: string | null;
 }
 
 export interface IGetAllProductsResponse {

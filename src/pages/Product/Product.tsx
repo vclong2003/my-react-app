@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
-import * as S from "./Home.styled";
-import Table from "./Table/Table";
+import * as S from "./Product.styled";
 import { AppDispatch } from "../../store";
 import { useEffect } from "react";
 import { getAllProducts } from "../../store/product/productActions";
+import ProductTable from "./ProductTable/ProductTable";
 
-export default function Home() {
+export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <S.Home>
       <S.Container>
-        <Table />
+        <ProductTable />
       </S.Container>
     </S.Home>
   );

@@ -3,15 +3,10 @@ import styled from "styled-components";
 import { TableRow as MuiTableRow } from "@mui/material";
 import { TableCell as MuiTableCell } from "@mui/material";
 
-export const TableRow = styled(MuiTableRow)``;
+export const ProductItem = styled(MuiTableRow)``;
 
-interface ITableCellProps {
-  $isHeader?: boolean;
-}
-
-export const TableCell = styled(MuiTableCell)<ITableCellProps>`
+export const TableCell = styled(MuiTableCell)`
   font-size: var(--fs-md);
-  ${({ $isHeader }) => $isHeader && `font-weight: var(--fw-bold);`};
 `;
 
 export const ActionBtnsCell = styled(MuiTableCell)`

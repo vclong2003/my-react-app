@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import * as S from "./Table.styled";
-import TableRow from "./TableRow/TableRow";
+import * as S from "./ProductTable.styled";
 import { RootState } from "../../../store";
-import { getProductTableData } from "../../../utils/productUtils";
+import ProductItem from "./ProductItem/ProductItem";
+import ProductTableHeader from "./ProductTableHeader/ProductTableHeader";
 
-const header = [
+const HEADER = [
   "Status",
   "Date",
   "Client",
@@ -14,17 +14,17 @@ const header = [
   "",
 ];
 
-export default function Table() {
+export default function ProductTable() {
   const { products } = useSelector((state: RootState) => state.productSlice);
 
   return (
     <S.Table>
       <S.TableHead>
-        <TableRow isHeader={true} data={header} />
+        <ProductTableHeader columns={HEADER} />
       </S.TableHead>
       <S.TableBody>
         {products.map((product) => (
-          <TableRow key={product.id} data={getProductTableData(product)} />
+          <ProductItem key={product.id} product={product} />
         ))}
       </S.TableBody>
     </S.Table>
