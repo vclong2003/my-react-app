@@ -18,24 +18,26 @@ import {
 export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [isAddProductVisible, setIsAddProductVisible] = useState(true);
-
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
+  // Add product -----------------------------------------------------
+  const [isAddProductVisible, setIsAddProductVisible] = useState(true);
   const onAddProduct = (values: Partial<IProduct>) => {
     dispatch(createProduct(values as ICreateProductPayload));
     setIsAddProductVisible(false);
   };
+  const onCancelAddProduct = () => setIsAddProductVisible(false);
 
   return (
     <S.Product>
       <Popup
         show={isAddProductVisible}
         onClose={() => setIsAddProductVisible(false)}>
-        <ProductForm onSubmit={onAddProduct} />
+        <ProductForm onSubmit={onAddProduct} onCancel={onCancelAddProduct} />
       </Popup>
+
       <UpdateProductPopup />
       <S.Container>
         <ProductTable />

@@ -11,3 +11,5 @@ export const Container = styled.div`
   background-color: var(--light-gray);
   overflow: hidden;
 `;
+
+export const AddProductBtn = styled.button``;
