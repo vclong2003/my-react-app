@@ -18,7 +18,10 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  margin-bottom: var(--s-3);
 `;
 
-export const AddProductBtn = styled(FormButton)``;
+export const AddProductBtn = styled(FormButton)`
+  margin: 0;
+`;

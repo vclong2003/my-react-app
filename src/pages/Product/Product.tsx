@@ -14,6 +14,7 @@ import {
   ICreateProductPayload,
   IProduct,
 } from "../../interfaces/product.interface";
+import ProductFilters from "./ProductFilters/ProductFilters";
 
 export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,7 +42,7 @@ export default function Product() {
         <ProductForm onSubmit={onAddProduct} onCancel={onCancelAddProduct} />
       </Popup>
       <S.Header>
-        <h1>Products</h1>
+        <ProductFilters onApply={() => {}} />
         <S.AddProductBtn onClick={onAddProductClick}>
           Add Product
         </S.AddProductBtn>

@@ -19,6 +19,14 @@ export interface IProduct {
   updatedAt: Date;
 }
 
+export interface IProductFilters {
+  status: EProductStatus | "";
+  client: string | "";
+  from: Date | null;
+  to: Date | null;
+  invoice: string | "";
+}
+
 export interface IProductState {
   selectedProduct: IProduct | null;
   products: IProduct[];
