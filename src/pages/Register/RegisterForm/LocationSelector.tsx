@@ -1,12 +1,12 @@
-import { useFormikContext } from "formik";
 import {
   FormError,
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
-import useLocationSelector from "../../../hooks/useLocationSelector";
-import { IRegisterPayload } from "../../../interfaces/auth.interface";
+} from "@components/formComponents";
+import useLocationSelector from "@hooks/useLocationSelector";
+import { IRegisterPayload } from "@interfaces/auth.interface";
+import { useFormikContext } from "formik";
 import { useEffect } from "react";
 
 export default function LocationSelector() {
@@ -17,7 +17,7 @@ export default function LocationSelector() {
   useEffect(() => {
     setCountry(values.region);
     setFieldValue("state", 0);
-  }, [values.region, setCountry, setFieldValue]);
+  }, [values.region]);
 
   return (
     <>

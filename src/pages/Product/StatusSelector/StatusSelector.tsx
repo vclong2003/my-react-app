@@ -1,9 +1,5 @@
-import {
-  FormGroup,
-  FormInput,
-  FormLabel,
-} from "../../../components/formComponents";
-import { EProductStatus } from "../../../interfaces/product.interface";
+import { FormGroup, FormInput, FormLabel } from "@components/formComponents";
+import { EProductStatus } from "@interfaces/product.interface";
 
 export default function ProductStatusSelector() {
   return (

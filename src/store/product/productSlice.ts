@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IProduct, IProductState } from "../../interfaces/product.interface";
+import { IProduct, IProductState } from "@interfaces/product.interface";
 import {
   createProduct,
   deleteProduct,

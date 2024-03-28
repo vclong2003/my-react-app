@@ -1,9 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  ILoginPayload,
-  IRegisterPayload,
-} from "../../interfaces/auth.interface";
-import authService from "../../services/api/auth";
+import { ILoginPayload, IRegisterPayload } from "@interfaces/auth.interface";
+import authService from "@services/api/auth";
 
 export const login = createAsyncThunk(
   "authSlice/login",

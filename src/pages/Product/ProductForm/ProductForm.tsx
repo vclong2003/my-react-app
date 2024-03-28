@@ -1,14 +1,11 @@
-import {
-  EProductStatus,
-  IProduct,
-} from "../../../interfaces/product.interface";
+import { EProductStatus, IProduct } from "@interfaces/product.interface";
 import * as S from "./ProductForm.styled";
 import {
   FormError,
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
+} from "@components/formComponents";
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
 import ProductFormUpdater from "./ProductFormUpdater";
 

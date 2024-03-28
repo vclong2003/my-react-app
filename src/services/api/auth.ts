@@ -4,8 +4,8 @@ import {
   ILoginResponse,
   IRegisterPayload,
   IRegisterResponse,
-} from "../../interfaces/auth.interface";
-import { axiosInstance } from "../../libs/axios";
+} from "@interfaces/auth.interface";
+import { axiosInstance } from "@libs/axios";
 
 const login = async (payload: ILoginPayload): Promise<ILoginResponse> => {
   return await axiosInstance.post("/auth/login", payload);

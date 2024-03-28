@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IAuthState } from "../../interfaces/auth.interface";
+import { IAuthState } from "@interfaces/auth.interface";
 import { getCurrentUser, login, register } from "./authActions";
-import { saveUserToken } from "../../utils/storageUtils";
+import { saveUserToken } from "@utils/storageUtils";
 
 const name = "authSlice";
 const initialState: IAuthState = {

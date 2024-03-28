@@ -1,14 +1,14 @@
 import * as S from "./Register.styled";
 import RegisterForm from "./RegisterForm/RegisterForm";
-import backgroundImage from "../../assets/images/register_bg.png";
+import backgroundImage from "@assets/images/register_bg.png";
 
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { AppDispatch, RootState } from "../../store";
-import { IRegisterPayload } from "../../interfaces/auth.interface";
+import { AppDispatch, RootState } from "@store/index";
+import { IRegisterPayload } from "@interfaces/auth.interface";
 
-import { register } from "../../store/auth/authActions";
+import { register } from "@store/auth/authActions";
 
 export default function Register() {
   const { user, isLoading, error } = useSelector(

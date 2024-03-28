@@ -6,11 +6,11 @@ import {
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
+} from "@components/formComponents";
 
-import { ILoginPayload } from "../../../interfaces/auth.interface";
+import { ILoginPayload } from "@interfaces/auth.interface";
 
-import { loginSchema } from "../../../utils/authUtils";
+import { loginSchema } from "@utils/authUtils";
 
 interface ILoginFormProps {
   onLogin: (values: ILoginPayload) => void;

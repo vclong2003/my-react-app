@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import productService from "../../services/api/product";
+import productService from "@services/api/product";
 import {
   ICreateProductPayload,
   IDeleteProductPayload,
   IUpdateProductPayload,
-} from "../../interfaces/product.interface";
+} from "@interfaces/product.interface";
 import { v4 as uuidv4 } from "uuid";
 
 export const getAllProducts = createAsyncThunk(

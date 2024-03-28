@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 import { useEffect } from "react";
-import { IProduct } from "../../../interfaces/product.interface";
+import { IProduct } from "@../interfaces/product.interface";
 
 interface IProductFormUpdaterProps {
   product?: IProduct;

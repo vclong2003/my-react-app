@@ -6,13 +6,13 @@ import {
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
+} from "@components/formComponents";
 import LocationSelector from "./LocationSelector";
 import GenderSelector from "./GenderSelector";
 
-import { EGender, IRegisterPayload } from "../../../interfaces/auth.interface";
+import { EGender, IRegisterPayload } from "@interfaces/auth.interface";
 
-import { registerSchema } from "../../../utils/authUtils";
+import { registerSchema } from "@utils/authUtils";
 
 interface IRegisterButtonProps {
   onRegister: (values: IRegisterPayload) => void;

@@ -8,8 +8,8 @@ import {
   IGetProductByIdResponse,
   IUpdateProductPayload,
   IUpdateProductResponse,
-} from "../../interfaces/product.interface";
-import { axiosInstance } from "../../libs/axios";
+} from "@interfaces/product.interface";
+import { axiosInstance } from "@libs/axios";
 
 const getAllProducts = async (): Promise<IGetAllProductsResponse> => {
   return await axiosInstance.get("/product");

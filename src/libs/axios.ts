@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
-import { API_BASE_URL } from "../config/api";
-import { getUserToken } from "../utils/storageUtils";
+import { API_BASE_URL } from "@config/api";
+import { getUserToken } from "@utils/storageUtils";
 
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -22,9 +22,10 @@ axiosInstance.interceptors.response.use(
   (error) => {
     console.log("Error", error);
     const message =
+      error?.response?.data?.message ||
       error?.response?.data?.message?.details[0]?.message ||
-      error?.response?.data?.message;
-    ("Something went wrong!");
+      "Something went wrong!";
+
     return Promise.reject(message);
   }
 );
