@@ -1,20 +1,12 @@
 import { useDispatch } from "react-redux";
 import * as S from "./Product.styled";
 import { AppDispatch } from "../../store";
-import { useEffect, useState } from "react";
-import {
-  createProduct,
-  getAllProducts,
-} from "../../store/product/productActions";
+import { useEffect } from "react";
+import { getAllProducts } from "../../store/product/productActions";
 import ProductTable from "./ProductTable/ProductTable";
 import UpdateProductPopup from "./UpdateProductPopup/UpdateProductPropup";
-import Popup from "../../components/Popup/Popup";
-import ProductForm from "./ProductForm/ProductForm";
-import {
-  ICreateProductPayload,
-  IProduct,
-} from "../../interfaces/product.interface";
 import ProductFilters from "./ProductFilters/ProductFilters";
+import AddProductPopup from "./AddProductPopup/AppProductPopup";
 
 export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,25 +15,9 @@ export default function Product() {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  // Add product -----------------------------------------------------
-  const [isAddProductVisible, setIsAddProductVisible] = useState(false);
-  const onAddProduct = (values: Partial<IProduct>) => {
-    dispatch(createProduct(values as ICreateProductPayload))
-      .unwrap()
-      .catch((err) => console.log(err.message));
-    setIsAddProductVisible(false);
-  };
-  const onAddProductClick = () => setIsAddProductVisible(true);
-  const onCancelAddProduct = () => setIsAddProductVisible(false);
-
   return (
     <S.Product>
-      <Popup
-        show={isAddProductVisible}
-        onClose={() => setIsAddProductVisible(false)}>
-        <ProductForm onSubmit={onAddProduct} onCancel={onCancelAddProduct} />
-      </Popup>
-      <S.AddProductBtn onClick={onAddProductClick}>Add Product</S.AddProductBtn>
+      <AddProductPopup />
       <S.Header>
         <ProductFilters />
       </S.Header>

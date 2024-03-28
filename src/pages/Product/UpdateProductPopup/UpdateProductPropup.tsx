@@ -8,6 +8,7 @@ import {
   IUpdateProductPayload,
 } from "../../../interfaces/product.interface";
 import { updateProduct } from "../../../store/product/productActions";
+import { useState } from "react";
 
 export default function UpdateProductPopup() {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,20 +16,28 @@ export default function UpdateProductPopup() {
     (state: RootState) => state.productSlice
   );
 
-  const onCLose = () => dispatch(setSelectedProduct(null));
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const onUpdate = (values: Partial<IProduct>) => {
+  const clearSelectedProduct = () => dispatch(setSelectedProduct(null));
+  const update = (values: Partial<IProduct>) => {
+    setError("");
+    setIsLoading(true);
     dispatch(updateProduct(values as IUpdateProductPayload))
       .unwrap()
-      .catch((err) => console.log(err.message));
+      .then(() => clearSelectedProduct())
+      .catch((err) => setError(err.message))
+      .finally(() => setIsLoading(false));
   };
 
   return (
-    <Popup show={selectedProduct !== null} onClose={onCLose}>
+    <Popup show={selectedProduct !== null} onClose={clearSelectedProduct}>
       <ProductForm
         product={selectedProduct!}
-        onSubmit={onUpdate}
-        onCancel={onCLose}
+        isLoading={isLoading}
+        error={error}
+        onSubmit={update}
+        onCancel={clearSelectedProduct}
       />
     </Popup>
   );

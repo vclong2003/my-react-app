@@ -12,12 +12,6 @@ import {
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
 import ProductFormUpdater from "./ProductFormUpdater";
 
-interface IProductFormProps {
-  product?: IProduct;
-  onSubmit: (values: Partial<IProduct>) => void;
-  onCancel: () => void;
-}
-
 const initialValues: Partial<IProduct> = {
   order: "",
   client: "",
@@ -27,16 +21,25 @@ const initialValues: Partial<IProduct> = {
   fundingMethod: "",
 };
 
+interface IProductFormProps {
+  product?: IProduct;
+  error?: string;
+  isLoading?: boolean;
+  onSubmit: (values: Partial<IProduct>) => void;
+  onCancel: () => void;
+}
+
 export default function ProductForm({
+  error,
   product,
   onSubmit,
   onCancel,
+  isLoading,
 }: IProductFormProps) {
   const handleSubmit = (values: Partial<IProduct>) => {
     if (product) return onSubmit({ id: product.id, ...values });
     return onSubmit(values);
   };
-
   return (
     <S.ProductForm
       initialValues={initialValues}
@@ -78,9 +81,12 @@ export default function ProductForm({
         </FormGroup>
         {/* Form buttons ------------------------- */}
         <S.BtnsContainer>
-          <S.SaveButton type="submit">Save</S.SaveButton>
+          <S.SaveButton type="submit" disabled={isLoading}>
+            {isLoading ? "Loading..." : "Save"}
+          </S.SaveButton>
           <S.CancelButton type="reset">Cancel</S.CancelButton>
         </S.BtnsContainer>
+        {error && <S.Error>{error}</S.Error>}
       </S.Form>
     </S.ProductForm>
   );

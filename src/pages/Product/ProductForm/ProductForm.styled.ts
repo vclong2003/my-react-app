@@ -10,7 +10,7 @@ export const Form = styled(FormikForm)`
 
 export const BtnsContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: var(--s-2);
 `;
 
@@ -22,5 +22,10 @@ export const SaveButton = styled(FormButton)`
 export const CancelButton = styled(FormButton)`
   font-size: var(--fs-md);
   font-weight: var(--fw-normal);
-  background-color: var(--light-gray);
+  background-color: var(--blue-gray);
+`;
+
+export const Error = styled.p`
+  color: var(--red);
+  font-size: var(--fs-md);
 `;
