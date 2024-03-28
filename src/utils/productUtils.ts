@@ -1,15 +1,4 @@
-import { IProduct, IProductFilter } from "../interfaces/product.interface";
-
-export const getProductTableData = (product: IProduct) => {
-  return [
-    product.status,
-    product.createdAt.toString(),
-    product.client,
-    product.currency,
-    product.total.toString(),
-    product.invoice,
-  ];
-};
+import { IProduct, IProductFilter } from "@interfaces/product.interface";
 
 export const filterProducts = (
   products: IProduct[],
@@ -25,4 +14,14 @@ export const filterProducts = (
       (!filter.to || product.createdAt <= new Date(filter.to))
     );
   });
+};
+
+export const paginateProducts = (
+  products: IProduct[],
+  page: number,
+  productsPerPage: number
+) => {
+  const start = (page - 1) * productsPerPage;
+  const end = start + productsPerPage;
+  return products.slice(start, end);
 };

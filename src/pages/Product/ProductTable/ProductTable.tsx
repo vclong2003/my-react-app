@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import * as S from "./ProductTable.styled";
-import { RootState } from "../../../store";
-import ProductItem from "./ProductItem/ProductItem";
+import { RootState } from "@store/index";
 import ProductTableHeader from "./ProductTableHeader/ProductTableHeader";
-import { filterProducts } from "../../../utils/productUtils";
+import { filterProducts } from "@utils/productUtils";
+import ProductItemRow from "./ProductItemRow/ProductItemRow";
 
 const HEADER = [
   "Status",
@@ -27,7 +27,7 @@ export default function ProductTable() {
       </S.TableHead>
       <S.TableBody>
         {filterProducts(products, filter).map((product) => (
-          <ProductItem key={product.id} product={product} />
+          <ProductItemRow key={product.id} product={product} />
         ))}
       </S.TableBody>
     </S.Table>
