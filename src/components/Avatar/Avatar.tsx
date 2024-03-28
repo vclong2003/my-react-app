@@ -1,7 +1,7 @@
 import * as S from "./Avatar.styled";
 
-import DummyAvatar from "../../assets/images/avatar_placeholder.png";
-import UpdateIcon from "../../assets/icons/image.png";
+import DummyAvatar from "@assets/images/avatar_placeholder.png";
+import UpdateIcon from "@assets/icons/edit.png";
 
 interface IAvatarProps extends JSX.IntrinsicAttributes {
   imageUrl?: string | null;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const AvatarImage = styled.img`
   aspect-ratio: 1/1;
+  object-fit: cover;
   width: 100%;
   height: auto;
   border-radius: 50%;
@@ -9,7 +10,7 @@ export const AvatarImage = styled.img`
 
 export const AvatarUpdateIcon = styled.img`
   display: none;
-  width: 30%;
+  width: 25%;
   height: auto;
   position: absolute;
 `;

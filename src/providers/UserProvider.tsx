@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store";
+import { AppDispatch } from "@store/index";
 import { getCurrentUser } from "@store/user/userActions";
 
 interface IUserProviderProps {
