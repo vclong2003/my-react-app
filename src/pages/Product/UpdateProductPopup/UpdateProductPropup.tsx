@@ -17,6 +17,7 @@ export default function UpdateProductPopup() {
   const [error, setError] = useState("");
 
   const clearSelectedProduct = () => dispatch(setSelectedProduct(null));
+
   const update = (values: Partial<IProduct>) => {
     setError("");
     setIsLoading(true);
