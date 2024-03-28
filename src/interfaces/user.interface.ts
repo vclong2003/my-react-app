@@ -17,10 +17,8 @@ export interface IUser {
   updatedAt: string;
 }
 
-export interface IAuthState {
+export interface IUserState {
   user: IUser | null;
-  loading: boolean;
-  error: string | null;
 }
 
 // Get Current User -------------------------------------
@@ -59,4 +57,9 @@ export interface IRegisterResponse {
   error: boolean;
   code: number;
   data: IUser & { token: string };
+}
+
+// Update avatar ------------------------------------------------
+export interface IUpdateAvatarPayload {
+  file: File;
 }

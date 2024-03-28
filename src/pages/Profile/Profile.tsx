@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { removeUserToken } from "@utils/storageUtils";
-import { setUser } from "@store/authSlice";
+import { setUser } from "@store/user/userSlice";
 import * as S from "./Profile.styled";
 import InfoItem from "./InfoItem/InfoItem";
 import { imageUrl } from "@utils/dataUtils";
@@ -11,7 +11,7 @@ import { useState } from "react";
 import ImageCropper from "./ImageCropper/ImageCropper";
 
 export default function Profile() {
-  const { user } = useSelector((state: RootState) => state.authSlice);
+  const { user } = useSelector((state: RootState) => state.userSlice);
   const dispatch = useDispatch<AppDispatch>();
 
   const [isAvatarPopupOpen, setIsAvatarPopupOpen] = useState(false);

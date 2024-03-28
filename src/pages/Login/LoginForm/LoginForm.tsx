@@ -1,4 +1,4 @@
-import { ILoginPayload } from "../../../interfaces/auth.interface";
+import { ILoginPayload } from "../../../interfaces/user.interface";
 import { ErrorMessage, Formik } from "formik";
 import * as Yup from "yup";
 import {

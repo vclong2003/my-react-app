@@ -7,7 +7,7 @@ import {
   FormInput,
   FormLabel,
 } from "../../../components/formComponents";
-import { EGender, IRegisterPayload } from "../../../interfaces/auth.interface";
+import { EGender, IRegisterPayload } from "../../../interfaces/user.interface";
 import * as Yup from "yup";
 import LocationSelector from "./LocationSelector";
 import GenderSelector from "./GenderSelector";

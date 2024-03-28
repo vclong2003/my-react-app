@@ -6,7 +6,7 @@ import {
   FormLabel,
 } from "../../../components/formComponents";
 import useLocationSelector from "../../../hooks/useLocationSelector";
-import { IRegisterPayload } from "../../../interfaces/auth.interface";
+import { IRegisterPayload } from "../../../interfaces/user.interface";
 import { useEffect } from "react";
 
 export default function LocationSelector() {

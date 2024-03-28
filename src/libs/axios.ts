@@ -4,9 +4,6 @@ import { getUserToken } from "../utils/storageUtils";
 
 export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 axiosInstance.interceptors.request.use((config) => {
@@ -17,3 +14,16 @@ axiosInstance.interceptors.request.use((config) => {
   }
   return config;
 });
+
+axiosInstance.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    console.log("Error", error);
+    const message =
+      error?.response?.data?.message?.details[0]?.message ||
+      error?.response?.data?.message ||
+      "Something went wrong!";
+
+    throw new Error(message);
+  }
+);
