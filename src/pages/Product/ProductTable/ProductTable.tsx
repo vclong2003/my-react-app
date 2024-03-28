@@ -10,7 +10,13 @@ import {
   PRODUCT_TABLE_HEADER,
 } from "@variables/product.variable";
 import { useMemo, useState } from "react";
-export default function ProductTable() {
+import SkeletonRows from "./SkeletonRows/SkeletonRows";
+
+interface IProductTableProps {
+  isLoading: boolean;
+}
+
+export default function ProductTable({ isLoading }: IProductTableProps) {
   const { products, filter } = useSelector(
     (state: RootState) => state.productSlice
   );
@@ -33,15 +39,22 @@ export default function ProductTable() {
   return (
     <>
       <S.Table>
+        {/* Head ------------------------------------------- */}
         <S.TableHead>
           <ProductTableHeader columns={PRODUCT_TABLE_HEADER} />
         </S.TableHead>
+        {/* Body ------------------------------------------- */}
         <S.TableBody>
-          {paginatedProducts.map((product) => (
-            <ProductItemRow key={product.id} product={product} />
-          ))}
+          {isLoading ? (
+            <SkeletonRows />
+          ) : (
+            paginatedProducts.map((product) => (
+              <ProductItemRow key={product.id} product={product} />
+            ))
+          )}
         </S.TableBody>
       </S.Table>
+      {/* Pagination ------------------------------------------- */}
       <S.PaginationContainer>
         <Pagination
           pages={numberOfPages}

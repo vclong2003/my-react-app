@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import * as S from "./Product.styled";
 import { AppDispatch } from "@store/index";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllProducts } from "@store/product/productActions";
 import ProductTable from "./ProductTable/ProductTable";
 import UpdateProductPopup from "./UpdateProductPopup/UpdateProductPropup";
@@ -11,8 +11,11 @@ import AddProductPopup from "./AddProductPopup/AppProductPopup";
 export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    dispatch(getAllProducts());
+    setIsLoading(true);
+    dispatch(getAllProducts()).then(() => setIsLoading(false));
   }, [dispatch]);
 
   return (
@@ -20,7 +23,7 @@ export default function Product() {
       <AddProductPopup />
       <ProductFilters />
       <UpdateProductPopup />
-      <ProductTable />
+      <ProductTable isLoading={isLoading} />
     </S.Product>
   );
 }
