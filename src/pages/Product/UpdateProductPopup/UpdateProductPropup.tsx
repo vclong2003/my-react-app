@@ -1,14 +1,11 @@
-import Popup from "../../../components/Popup/Popup";
 import ProductForm from "../ProductForm/ProductForm";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store";
-import { setSelectedProduct } from "../../../store/product/productSlice";
-import {
-  IProduct,
-  IUpdateProductPayload,
-} from "../../../interfaces/product.interface";
-import { updateProduct } from "../../../store/product/productActions";
+import { setSelectedProduct } from "@store/product/productSlice";
+import { IProduct, IUpdateProductPayload } from "@interfaces/product.interface";
+import { updateProduct } from "@store/product/productActions";
 import { useState } from "react";
+import Popup from "@components/Popup/Popup";
+import { AppDispatch, RootState } from "@store/index";
 
 export default function UpdateProductPopup() {
   const dispatch = useDispatch<AppDispatch>();

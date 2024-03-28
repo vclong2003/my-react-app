@@ -1,10 +1,8 @@
-import { Formik, Form as FormikForm } from "formik";
+import { default as BaseFrom } from "@components/formComponents/Form/Form";
 import styled from "styled-components";
-import { FormButton } from "../../../components/formComponents";
+import { FormButton } from "@components/formComponents";
 
-export const ProductFilter = styled(Formik)``;
-
-export const Form = styled(FormikForm)`
+export const Form = styled(BaseFrom)`
   display: flex;
   flex-direction: row;
   align-items: flex-end;

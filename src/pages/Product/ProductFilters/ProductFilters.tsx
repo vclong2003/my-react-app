@@ -1,11 +1,12 @@
-import { IProductFilter } from "../../../interfaces/product.interface";
+import { IProductFilter } from "@interfaces/product.interface";
 import * as S from "./ProductFilters.styled";
-import { FormInput, FormLabel } from "../../../components/formComponents";
+import { FormInput, FormLabel } from "@components/formComponents";
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
-import { FormGroup } from "../../../components/formComponents/FormGroup/FormGroup.styled";
+import { FormGroup } from "@components/formComponents/FormGroup/FormGroup.styled";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../store";
-import { setFilter } from "../../../store/product/productSlice";
+import { AppDispatch } from "@store/index";
+import { setFilter } from "@store/product/productSlice";
+import { Formik } from "formik";
 
 const intitialValues: IProductFilter = {
   status: "",
@@ -18,11 +19,13 @@ const intitialValues: IProductFilter = {
 export default function ProductFilters() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const onSubmit = (values: IProductFilter) => dispatch(setFilter(values));
+  const onSubmit = (values: IProductFilter) => {
+    dispatch(setFilter(values));
+  };
   const onReset = () => dispatch(setFilter(null));
 
   return (
-    <S.ProductFilter
+    <Formik
       initialValues={intitialValues}
       onReset={onReset}
       onSubmit={onSubmit}>
@@ -51,6 +54,6 @@ export default function ProductFilters() {
           <S.ResetButton type="reset">Reset</S.ResetButton>
         </FormGroup>
       </S.Form>
-    </S.ProductFilter>
+    </Formik>
   );
 }
