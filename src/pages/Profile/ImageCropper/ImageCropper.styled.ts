@@ -25,14 +25,15 @@ const BaseBtn = styled(FormButton)`
   padding: var(--s-2) var(--s-5);
 `;
 
-export const ClearButton = styled(BaseBtn)`
-  background-color: var(--blue-gray);
-`;
-
 export const SaveButton = styled(BaseBtn)`
   background-color: var(--gold);
 `;
 export const CancelButton = styled(BaseBtn)`
   background-color: var(--ice-blue);
   color: var(--black);
+`;
+
+export const Error = styled.p`
+  color: var(--red);
+  font-size: var(--fs-md);
 `;

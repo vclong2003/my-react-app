@@ -6,16 +6,11 @@ import {
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
-import { EGender, IRegisterPayload } from "../../../interfaces/user.interface";
-import * as Yup from "yup";
+} from "@components/formComponents";
+import { EGender, IRegisterPayload } from "@interfaces/user.interface";
 import LocationSelector from "./LocationSelector";
 import GenderSelector from "./GenderSelector";
-
-interface IRegisterButtonProps {
-  onRegister: (values: IRegisterPayload) => void;
-  loading: boolean;
-}
+import { RegisterValidationSchema } from "@utils/authUtils";
 
 const initialValues: IRegisterPayload = {
   email: "",
@@ -27,18 +22,10 @@ const initialValues: IRegisterPayload = {
   gender: EGender.Male,
 };
 
-const RegisterSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().required("Required"),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
-    .required("Required"),
-  name: Yup.string().required("Required"),
-  region: Yup.number().not([0], "Required").required("Required"),
-  state: Yup.number().not([0], "Required").required("Required"),
-  gender: Yup.string().required("Required"),
-});
-
+interface IRegisterButtonProps {
+  onRegister: (values: IRegisterPayload) => void;
+  loading: boolean;
+}
 export default function RegisterForm({
   loading,
   onRegister,
@@ -47,7 +34,7 @@ export default function RegisterForm({
     <Formik
       initialValues={initialValues}
       onSubmit={onRegister}
-      validationSchema={RegisterSchema}>
+      validationSchema={RegisterValidationSchema}>
       <Form>
         {/* Email -------------------------------- */}
         <FormGroup>

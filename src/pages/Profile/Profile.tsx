@@ -1,14 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/index";
-import { removeUserToken } from "@utils/storageUtils";
-import { setUser } from "@store/user/userSlice";
 import * as S from "./Profile.styled";
 import InfoItem from "./InfoItem/InfoItem";
+import Popup from "@components/Popup/Popup";
+import ImageCropper from "./ImageCropper/ImageCropper";
+
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setUser } from "@store/user/userSlice";
+import { removeUserToken } from "@utils/storageUtils";
 import { imageUrl } from "@utils/dataUtils";
 import { convertDate } from "@utils/dateUtils";
-import Popup from "@components/Popup/Popup";
-import { useState } from "react";
-import ImageCropper from "./ImageCropper/ImageCropper";
+
+import { AppDispatch, RootState } from "@store/index";
 
 export default function Profile() {
   const { user } = useSelector((state: RootState) => state.userSlice);
@@ -17,6 +20,8 @@ export default function Profile() {
   const [isAvatarPopupOpen, setIsAvatarPopupOpen] = useState(false);
   const onUpdateAvatarClick = () => setIsAvatarPopupOpen(true);
 
+  const onCloseAvatarPopup = () => setIsAvatarPopupOpen(false);
+
   const onLogout = () => {
     removeUserToken();
     dispatch(setUser(null));
@@ -24,11 +29,12 @@ export default function Profile() {
 
   return (
     <S.Container>
-      <Popup
-        onClose={() => setIsAvatarPopupOpen(false)}
-        show={isAvatarPopupOpen}>
+      <Popup onClose={onCloseAvatarPopup} show={isAvatarPopupOpen}>
         {isAvatarPopupOpen ? (
-          <ImageCropper initialImageUrl={imageUrl(user?.avatar || "")} />
+          <ImageCropper
+            initialImageUrl={imageUrl(user?.avatar || "")}
+            onClose={onCloseAvatarPopup}
+          />
         ) : null}
       </Popup>
       <S.Title>Your profile</S.Title>

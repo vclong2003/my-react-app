@@ -3,9 +3,9 @@ import {
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
-import { EGender } from "../../../interfaces/user.interface";
-import { capitalize } from "../../../utils/textUtils";
+} from "@components/formComponents";
+import { EGender } from "@interfaces/user.interface";
+import { capitalize } from "@utils/textUtils";
 
 export default function GenderSelector() {
   return (

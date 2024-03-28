@@ -1,13 +1,14 @@
 import * as S from "./Register.styled";
 import RegisterForm from "./RegisterForm/RegisterForm";
+import backgroundImage from "@assets/images/register_bg.png";
 
-import backgroundImage from "../../assets/images/register_bg.png";
-import { IRegisterPayload } from "../../interfaces/user.interface";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { register } from "@store/user/userActions";
+
+import { IRegisterPayload } from "@interfaces/user.interface";
+import { AppDispatch, RootState } from "@store/index";
 
 export default function Register() {
   const { user } = useSelector((state: RootState) => state.userSlice);

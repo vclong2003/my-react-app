@@ -1,33 +1,44 @@
-import ReactCrop, { Crop } from "react-image-crop";
 import * as S from "./ImageCropper.styled";
+
 import { useState } from "react";
-import { cropImage } from "@utils/imageUtils";
 import { useDispatch } from "react-redux";
+
 import { AppDispatch } from "@store/index";
 import { updateAvatar } from "@store/user/userActions";
 
+import ReactCrop, { Crop } from "react-image-crop";
+import { cropImage } from "@utils/imageUtils";
+
 interface IImageCropperProps {
   initialImageUrl: string;
+  onClose: () => void;
 }
 
-export default function ImageCropper({ initialImageUrl }: IImageCropperProps) {
+export default function ImageCropper({
+  initialImageUrl,
+  onClose,
+}: IImageCropperProps) {
   const dispatch = useDispatch<AppDispatch>();
 
   const [avatarUrl, setAvatarUrl] = useState<string>(initialImageUrl);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const [crop, setCrop] = useState<Crop>();
   const [image, setImage] = useState<HTMLImageElement | null>(null);
 
-  const onSave = () => {
+  const onSave = async () => {
     if (!image || !crop) return;
     setIsLoading(true);
-    cropImage(image, crop)
-      .then((croppedImageFile) =>
-        dispatch(updateAvatar({ file: croppedImageFile })).unwrap()
-      )
-      .catch((error) => console.error(error?.message))
-      .finally(() => setIsLoading(false));
+    try {
+      const croppedImageFile = await cropImage(image, crop);
+      await dispatch(updateAvatar({ file: croppedImageFile })).unwrap();
+      onClose();
+    } catch (error) {
+      setError((error as Error)?.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onAvatarFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,14 +60,12 @@ export default function ImageCropper({ initialImageUrl }: IImageCropperProps) {
       </ReactCrop>
       <input type="file" accept="image/*" onChange={onAvatarFileChange} />
       <S.BtnsContainer>
-        <S.ClearButton onClick={() => setCrop(undefined)}>Clear</S.ClearButton>
         <S.SaveButton onClick={onSave} disabled={isLoading}>
           {isLoading ? "Saving..." : "Save"}
         </S.SaveButton>
-        <S.CancelButton onClick={() => console.log("Cancel")}>
-          Cancel
-        </S.CancelButton>
+        <S.CancelButton onClick={onClose}>Cancel</S.CancelButton>
       </S.BtnsContainer>
+      {error && <S.Error>{error}</S.Error>}
     </S.ImageCropper>
   );
 }

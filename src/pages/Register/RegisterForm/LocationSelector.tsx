@@ -4,9 +4,9 @@ import {
   FormGroup,
   FormInput,
   FormLabel,
-} from "../../../components/formComponents";
-import useLocationSelector from "../../../hooks/useLocationSelector";
-import { IRegisterPayload } from "../../../interfaces/user.interface";
+} from "@components/formComponents";
+import useLocationSelector from "@hooks/useLocationSelector";
+import { IRegisterPayload } from "@interfaces/user.interface";
 import { useEffect } from "react";
 
 export default function LocationSelector() {

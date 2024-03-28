@@ -1,13 +1,14 @@
 import * as S from "./Login.styled";
 import LoginForm from "./LoginForm/LoginForm";
-import { ILoginPayload } from "@interfaces/user.interface";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/index";
-import { Navigate } from "react-router-dom";
-
 import backgroundImage from "@assets/images/login-background.png";
-import { login } from "@store/user/userActions";
+
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { login } from "@store/user/userActions";
+
+import { AppDispatch, RootState } from "@store/index";
+import { ILoginPayload } from "@interfaces/user.interface";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
