@@ -15,7 +15,6 @@ import SkeletonRows from "./SkeletonRows/SkeletonRows";
 interface IProductTableProps {
   isLoading: boolean;
 }
-
 export default function ProductTable({ isLoading }: IProductTableProps) {
   const { products, filter } = useSelector(
     (state: RootState) => state.productSlice

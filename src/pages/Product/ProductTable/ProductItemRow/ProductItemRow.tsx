@@ -10,7 +10,6 @@ import { setSelectedProduct } from "@store/product/productSlice";
 interface IProductItemRowProps {
   product: IProduct;
 }
-
 export default function ProductItemRow({ product }: IProductItemRowProps) {
   const dispatch = useDispatch<AppDispatch>();
 

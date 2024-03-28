@@ -1,5 +1,5 @@
-import { EProductStatus, IProduct } from "@interfaces/product.interface";
 import * as S from "./ProductForm.styled";
+import { EProductStatus, IProduct } from "@interfaces/product.interface";
 import {
   FormError,
   FormGroup,
