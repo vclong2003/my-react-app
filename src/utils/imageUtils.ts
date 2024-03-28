@@ -1,51 +1,47 @@
 import { Crop } from "react-image-crop";
 
-export const cropImage = (
-  image: HTMLImageElement,
-  crop: Crop,
-  onCropped: (file: File) => void
-) => {
-  const canvas = document.createElement("canvas");
+export const cropImage = (image: HTMLImageElement, crop: Crop) => {
+  return new Promise<File>((resolve, reject) => {
+    if (!image || !crop) return reject("Crop canvas does not exist");
 
-  if (!image || !crop) throw new Error("Crop canvas does not exist");
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
 
-  const scaleX = image.naturalWidth / image.width;
-  const scaleY = image.naturalHeight / image.height;
+    const pixelRatio = window.devicePixelRatio;
+    const canvas = document.createElement("canvas");
+    canvas.width = crop.width * pixelRatio * scaleX;
+    canvas.height = crop.height * pixelRatio * scaleY;
 
-  const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return reject("Canvas context does not exist");
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(
+      image,
+      crop.x * scaleX,
+      crop.y * scaleY,
+      crop.width * scaleX,
+      crop.height * scaleY,
+      0,
+      0,
+      crop.width * scaleX,
+      crop.height * scaleY
+    );
 
-  const pixelRatio = window.devicePixelRatio;
-  canvas.width = crop.width * pixelRatio * scaleX;
-  canvas.height = crop.height * pixelRatio * scaleY;
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) return reject("Canvas is empty");
 
-  if (!ctx) {
-    throw new Error("Canvas context does not exist");
-  }
-  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-  ctx.imageSmoothingQuality = "high";
+        // file name from img src
+        const fileName = decodeURIComponent(image.src).split("/").pop();
+        const file = new File([blob], `${fileName}.jpeg`, {
+          type: "image/jpeg",
+        });
 
-  ctx.drawImage(
-    image,
-    crop.x * scaleX,
-    crop.y * scaleY,
-    crop.width * scaleX,
-    crop.height * scaleY,
-    0,
-    0,
-    crop.width * scaleX,
-    crop.height * scaleY
-  );
-
-  canvas.toBlob(
-    (blob) => {
-      if (!blob) throw new Error("Canvas is empty");
-      const fileName = decodeURIComponent(image.src).split("/").pop();
-      const file = new File([blob], `${fileName}.jpeg`, {
-        type: "image/jpeg",
-      });
-      onCropped(file);
-    },
-    "image/jpeg",
-    1
-  );
+        return resolve(file);
+      },
+      "image/jpeg",
+      1
+    );
+  });
 };

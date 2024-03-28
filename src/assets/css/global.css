@@ -7,6 +7,17 @@
   outline: none;
   margin: 0;
   padding: 0;
+
+  ::-webkit-scrollbar {
+    width: var(--s-2);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--light-gray);
+    border-radius: var(--br-md);
+  }
 }
 
 :root {

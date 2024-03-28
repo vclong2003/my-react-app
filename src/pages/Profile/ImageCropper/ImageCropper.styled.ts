@@ -7,8 +7,8 @@ export const ImageCropper = styled.div`
 `;
 
 export const Image = styled.img`
-  max-height: 65vh !important;
-  width: auto;
+  width: 100%;
+  height: 100%;
 `;
 
 export const BtnsContainer = styled.div`

@@ -22,13 +22,13 @@ export const PopupOverlay = styled.div<IPopupOverlayProps>`
 export const PopupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 768px;
+  max-width: 512px;
+  max-height: 90vh;
   margin: 0 var(--s-8);
   background-color: var(--white);
   padding: var(--s-4);
   border-radius: var(--br-lg);
   box-shadow: var(--shadow-md);
-  overflow: hidden;
 `;
 
 export const PopupHeader = styled.div`
@@ -45,4 +45,7 @@ export const CloseIcon = styled.img`
   margin-bottom: var(--s-3);
 `;
 
-export const PopupBody = styled.div``;
+export const PopupBody = styled.div`
+  overflow-x: hidden;
+  overflow-y: auto;
+`;
