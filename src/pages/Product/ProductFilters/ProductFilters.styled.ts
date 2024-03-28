@@ -7,6 +7,7 @@ export const Form = styled(BaseFrom)`
   flex-direction: row;
   align-items: flex-end;
   gap: var(--s-2);
+  margin: var(--s-2) 0;
 `;
 
 export const ApplyButton = styled(FormButton)`

@@ -18,13 +18,9 @@ export default function Product() {
   return (
     <S.Product>
       <AddProductPopup />
-      <S.Header>
-        <ProductFilters />
-      </S.Header>
+      <ProductFilters />
       <UpdateProductPopup />
-      <S.Container>
-        <ProductTable />
-      </S.Container>
+      <ProductTable />
     </S.Product>
   );
 }
