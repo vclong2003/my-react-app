@@ -2,6 +2,7 @@ import * as S from "./Register.styled";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import backgroundImage from "@assets/images/register_bg.png";
 
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,12 +12,19 @@ import { IRegisterPayload } from "@interfaces/auth.interface";
 import { register } from "@store/auth/authActions";
 
 export default function Register() {
-  const { user, isLoading, error } = useSelector(
-    (state: RootState) => state.authSlice
-  );
+  const { user } = useSelector((state: RootState) => state.authSlice);
   const dispatch = useDispatch<AppDispatch>();
 
-  const onRegister = (values: IRegisterPayload) => dispatch(register(values));
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const onRegister = (values: IRegisterPayload) => {
+    setIsLoading(true);
+    dispatch(register(values))
+      .unwrap()
+      .catch((err) => setError(err.message))
+      .finally(() => setIsLoading(false));
+  };
 
   return (
     <S.Container>

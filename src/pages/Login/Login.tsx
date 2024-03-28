@@ -8,14 +8,21 @@ import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { login } from "@store/auth/authActions";
+import { useState } from "react";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
-  const { user, error, isLoading } = useSelector(
-    (state: RootState) => state.authSlice
-  );
+  const { user } = useSelector((state: RootState) => state.authSlice);
 
-  const handleLogin = (values: ILoginPayload) => dispatch(login(values));
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleLogin = (values: ILoginPayload) => {
+    dispatch(login(values))
+      .unwrap()
+      .catch((err) => setError(err.message))
+      .finally(() => setIsLoading(false));
+  };
 
   return (
     <S.Container>
