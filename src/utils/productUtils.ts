@@ -10,8 +10,8 @@ export const filterProducts = (
       (!filter.status || product.status.includes(filter.status)) &&
       (!filter.client || product.client.includes(filter.client)) &&
       (!filter.invoice || product.invoice.includes(filter.invoice)) &&
-      (!filter.from || product.createdAt >= new Date(filter.from)) &&
-      (!filter.to || product.createdAt <= new Date(filter.to))
+      (!filter.from || new Date(product.createdAt) >= new Date(filter.from)) &&
+      (!filter.to || new Date(product.createdAt) <= new Date(filter.to))
     );
   });
 };
