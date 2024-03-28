@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { default as BaseAvatar } from "../../components/Avatar/Avatar";
+import { default as BaseAvatar } from "@components/Avatar/Avatar";
 
 export const Container = styled.div`
   margin: var(--s-4) auto;

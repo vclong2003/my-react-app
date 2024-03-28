@@ -1,15 +1,18 @@
 import ReactCrop, { Crop } from "react-image-crop";
 import * as S from "./ImageCropper.styled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface IImageCropperProps {
   initialImageUrl: string;
 }
 
 export default function ImageCropper({ initialImageUrl }: IImageCropperProps) {
+  const imgRef = useRef<HTMLImageElement>(null);
   const [crop, setCrop] = useState<Crop>();
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string>(initialImageUrl);
+
+  const test = () => {};
 
   const onAvatarFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
