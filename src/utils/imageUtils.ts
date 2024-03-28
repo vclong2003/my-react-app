@@ -7,26 +7,21 @@ export const cropImage = (
 ) => {
   const canvas = document.createElement("canvas");
 
-  if (!image || !crop) {
-    throw new Error("Crop canvas does not exist");
-  }
-
-  if (!canvas) {
-    throw new Error("Canvas does not exist");
-  }
+  if (!image || !crop) throw new Error("Crop canvas does not exist");
 
   const scaleX = image.naturalWidth / image.width;
   const scaleY = image.naturalHeight / image.height;
 
   const ctx = canvas.getContext("2d");
 
-  canvas.width = crop.width;
-  canvas.height = crop.height;
+  const pixelRatio = window.devicePixelRatio;
+  canvas.width = crop.width * pixelRatio * scaleX;
+  canvas.height = crop.height * pixelRatio * scaleY;
 
   if (!ctx) {
     throw new Error("Canvas context does not exist");
   }
-
+  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
   ctx.imageSmoothingQuality = "high";
 
   ctx.drawImage(
@@ -37,8 +32,8 @@ export const cropImage = (
     crop.height * scaleY,
     0,
     0,
-    crop.width,
-    crop.height
+    crop.width * scaleX,
+    crop.height * scaleY
   );
 
   canvas.toBlob(
