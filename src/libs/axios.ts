@@ -22,8 +22,9 @@ axiosInstance.interceptors.response.use(
   (error) => {
     console.log("Error", error);
     const message =
+      (error?.response?.data?.message?.details &&
+        error?.response?.data?.message?.details[0]?.message) ||
       error?.response?.data?.message ||
-      error?.response?.data?.message?.details[0]?.message ||
       "Something went wrong!";
 
     return Promise.reject(message);
