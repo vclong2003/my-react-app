@@ -21,10 +21,10 @@ export const Title = styled.h1`
   color: var(--blue-gray);
 `;
 
-export const LeftContainer = styled.div`
+export const InfoContainer = styled.div`
   flex: 10;
 `;
-export const RightContainer = styled.div`
+export const AvatarContainer = styled.div`
   flex: 2;
   display: flex;
   flex-direction: column;

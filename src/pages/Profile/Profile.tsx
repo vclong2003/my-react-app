@@ -19,7 +19,6 @@ export default function Profile() {
 
   const [isAvatarPopupOpen, setIsAvatarPopupOpen] = useState(false);
   const onUpdateAvatarClick = () => setIsAvatarPopupOpen(true);
-
   const onCloseAvatarPopup = () => setIsAvatarPopupOpen(false);
 
   const onLogout = () => {
@@ -38,7 +37,7 @@ export default function Profile() {
         ) : null}
       </Popup>
       <S.Title>Your profile</S.Title>
-      <S.LeftContainer>
+      <S.InfoContainer>
         <InfoItem label="Id" value={user?.id.toString() || ""} />
         <InfoItem label="Email" value={user?.email || ""} />
         <InfoItem label="Name" value={user?.name || ""} />
@@ -49,15 +48,15 @@ export default function Profile() {
           label="Created at"
           value={(user?.createdAt && convertDate(user.createdAt)) || ""}
         />
-      </S.LeftContainer>
-      <S.RightContainer>
+      </S.InfoContainer>
+      <S.AvatarContainer>
         <S.Avatar
           imageUrl={(user?.avatar && imageUrl(user.avatar)) || null}
           isUpdateable={true}
           onUpdateClick={onUpdateAvatarClick}
         />
         <S.LogoutButton onClick={onLogout}>Logout</S.LogoutButton>
-      </S.RightContainer>
+      </S.AvatarContainer>
     </S.Container>
   );
 }
