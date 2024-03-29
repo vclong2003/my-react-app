@@ -1,12 +1,14 @@
-import { useDispatch } from "react-redux";
 import * as S from "./Product.styled";
-import { AppDispatch } from "@store/index";
-import { useEffect, useState } from "react";
-import { getAllProducts } from "@store/product/productActions";
 import ProductTable from "./ProductTable/ProductTable";
 import UpdateProductPopup from "./UpdateProductPopup/UpdateProductPropup";
 import ProductFilters from "./ProductFilters/ProductFilters";
 import AddProductPopup from "./AddProductPopup/AppProductPopup";
+
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { AppDispatch } from "@store/index";
+import { getAllProducts } from "@store/product/productActions";
 
 export default function Product() {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,6 +26,7 @@ export default function Product() {
       <ProductFilters />
       <UpdateProductPopup />
       <ProductTable isLoading={isLoading} />
+      <S.LogoutButton>Logout</S.LogoutButton>
     </S.Product>
   );
 }
