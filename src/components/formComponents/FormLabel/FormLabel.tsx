@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
 import * as S from "./FormLabel.styled";
+
+import { ReactNode } from "react";
 
 interface IFormLabelProps {
   children: ReactNode;

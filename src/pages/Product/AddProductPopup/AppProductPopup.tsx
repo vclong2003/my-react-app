@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { ICreateProductPayload, IProduct } from "@interfaces/product.interface";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@store/index";
-import { createProduct } from "@store/product/productActions";
 import * as S from "./AddProductPopup.styled";
 import ProductForm from "../ProductForm/ProductForm";
 import Popup from "@components/Popup/Popup";
+
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createProduct } from "@store/product/productActions";
+
+import { ICreateProductPayload, IProduct } from "@interfaces/product.interface";
+import { AppDispatch } from "@store/index";
 
 export default function AddProductPopup() {
   const dispatch = useDispatch<AppDispatch>();

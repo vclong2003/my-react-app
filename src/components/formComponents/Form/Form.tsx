@@ -1,5 +1,6 @@
-import { HTMLAttributes } from "react";
 import * as S from "./Form.styled";
+
+import { HTMLAttributes } from "react";
 
 interface IFormProps
   extends HTMLAttributes<HTMLFormElement>,

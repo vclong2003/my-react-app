@@ -1,5 +1,6 @@
-import PageNumber from "./PageNumber/PageNumber";
 import * as S from "./Pagination.styled";
+
+import PageNumber from "./PageNumber/PageNumber";
 
 interface IPaginationProps {
   pages: number;

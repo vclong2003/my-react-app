@@ -1,5 +1,6 @@
-import { ButtonHTMLAttributes } from "react";
 import * as S from "./FormButton.styled";
+
+import { ButtonHTMLAttributes } from "react";
 
 interface IFormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;

@@ -1,5 +1,6 @@
-import { ErrorMessage } from "formik";
 import * as S from "./FormError.styled";
+
+import { ErrorMessage } from "formik";
 
 interface IFormErrorProps {
   name: string;
