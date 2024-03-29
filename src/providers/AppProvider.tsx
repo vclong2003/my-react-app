@@ -1,10 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import store from "../store";
+import store from "@store/index";
 
 import "react-image-crop/dist/ReactCrop.css";
-import "../assets/css/global.css";
+import "@assets/css/global.css";
 
 import UserProvider from "./UserProvider";
 

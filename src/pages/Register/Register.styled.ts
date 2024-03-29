@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DEVICES } from "../../config/responsiveBreakpoints";
+import { DEVICES } from "@config/responsiveBreakpoints";
 
 export const Container = styled.div`
   display: flex;

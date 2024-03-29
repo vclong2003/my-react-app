@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Popup.styled";
 
-import CloseIcon from "../../assets/icons/cancel.png";
+import CloseIcon from "@assets/icons/cancel.png";
 
 interface IPopupProps extends JSX.IntrinsicAttributes {
   children: JSX.Element | JSX.Element[] | string | null | undefined;

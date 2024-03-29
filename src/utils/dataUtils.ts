@@ -1,4 +1,4 @@
-import { API_HOST } from "../config/api";
+import { API_HOST } from "@config/api";
 
 /**
  * Constructs the full URL for  image

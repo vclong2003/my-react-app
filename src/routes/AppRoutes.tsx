@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import RouteGuard from "../components/RouteGuard/RouteGuard";
+import RouteGuard from "@components/RouteGuard/RouteGuard";
 import { privateRoutes } from "./privateRoutes";
 import { publicRoutes } from "./publicRoutes";
 

@@ -5,7 +5,7 @@ import {
   IRegisterPayload,
   IRegisterResponse,
   IUpdateAvatarPayload,
-} from "../../interfaces/user.interface";
+} from "@interfaces/user.interface";
 import { API_BASE_URL } from "@config/api";
 import { axiosInstance } from "@libs/axios";
 
