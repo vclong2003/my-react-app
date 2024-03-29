@@ -1,4 +1,15 @@
+import * as Yup from "yup";
 import { IProduct, IProductFilter } from "@interfaces/product.interface";
+
+export const productSchema = () =>
+  Yup.object().shape({
+    order: Yup.string().required("Required!"),
+    client: Yup.string().required("Required!"),
+    status: Yup.string().required("Required!"),
+    total: Yup.number().moreThan(0).required("Required!"),
+    currency: Yup.string().required("Required!"),
+    fundingMethod: Yup.string().required("Required!"),
+  });
 
 export const filterProducts = (
   products: IProduct[],

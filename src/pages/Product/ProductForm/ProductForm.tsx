@@ -9,6 +9,8 @@ import {
 import ProductStatusSelector from "../StatusSelector/StatusSelector";
 import ProductFormUpdater from "./ProductFormUpdater";
 
+import { productSchema } from "@utils/productUtils";
+
 const initialValues: Partial<IProduct> = {
   order: "",
   client: "",
@@ -40,6 +42,7 @@ export default function ProductForm({
   return (
     <S.ProductForm
       initialValues={initialValues}
+      validationSchema={productSchema()}
       onSubmit={handleSubmit}
       onReset={onCancel}>
       <S.Form>
