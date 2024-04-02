@@ -1,72 +1,50 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import * as S from "./LoginForm.styled";
-import { ILoginPayload } from "../../../interfaces/auth.interface";
-import { validateEmail, validatePassword } from "../../../utils/auth.utils";
+import {
+  Form,
+  FormButton,
+  FormGroup,
+  FormInput,
+  FormLabel,
+} from "@components/formComponents";
+import { ErrorMessage, Formik } from "formik";
+
+import { LoginValidationSchema } from "@utils/authUtils";
+
+import { ILoginPayload } from "@interfaces/user.interface";
+
+const initialValues: ILoginPayload = {
+  email: "",
+  password: "",
+};
 
 interface ILoginFormProps {
   onLogin: (values: ILoginPayload) => void;
-  loading?: boolean;
+  loading: boolean;
 }
-
-interface IFormErrors {
-  email?: string;
-  password?: string;
-}
-
 export default function LoginForm({ onLogin, loading }: ILoginFormProps) {
-  const [errors, setErrors] = useState<IFormErrors>({});
-  const [values, setValues] = useState<ILoginPayload>({
-    email: "",
-    password: "",
-  });
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (loading) return;
-    setErrors({});
-    const emailValidation = validateEmail(values.email);
-    const passwordValidation = validatePassword(values.password);
-    if (!emailValidation.isValid) {
-      setErrors({ email: emailValidation.message });
-      return;
-    }
-    if (!passwordValidation.isValid) {
-      setErrors({ password: passwordValidation.message });
-      return;
-    }
-
-    onLogin(values);
-  };
-
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <S.FormGroup>
-        <S.Label htmlFor="email">Email</S.Label>
-        <S.Input
-          type="email"
-          placeholder="Enter your email"
-          value={values.email}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setValues({ ...values, email: e.target.value })
-          }
-        />
-        {errors.email && <S.Error>{errors.email}</S.Error>}
-      </S.FormGroup>
-      <S.FormGroup>
-        <S.Label htmlFor="password">Password</S.Label>
-        <S.Input
-          type="password"
-          placeholder="Enter your password"
-          value={values.password}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setValues({ ...values, password: e.target.value })
-          }
-        />
-        {errors.password && <S.Error>{errors.password}</S.Error>}
-      </S.FormGroup>
-      <S.Button $loading={loading} type="submit">
-        LOGIN
-      </S.Button>
-    </S.Form>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values) => onLogin(values)}
+      validationSchema={LoginValidationSchema}>
+      <Form>
+        <FormGroup>
+          <FormLabel>Email</FormLabel>
+          <FormInput type="email" name="email" placeholder="Enter your email" />
+          <ErrorMessage name="email" />
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Password</FormLabel>
+          <FormInput
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+          />
+          <ErrorMessage name="password" />
+        </FormGroup>
+        <FormButton loading={loading} type="submit">
+          LOGIN
+        </FormButton>
+      </Form>
+    </Formik>
   );
 }

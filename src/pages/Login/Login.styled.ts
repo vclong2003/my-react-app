@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { DEVICES } from "../../config/responsiveBreakpoints";
+import { DEVICES } from "@config/responsiveBreakpoints";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -35,14 +36,14 @@ export const Title = styled.h1`
   margin: var(--s-4) 0;
 `;
 
-export const Subtitle = styled.h3`
-  font-weight: var(--fw-normal);
-  font-size: var(--fs-xl);
-  margin: var(--s-4) 0;
-`;
-
 export const Error = styled.p`
   color: var(--red);
   font-size: var(--fs-md);
-  margin: var(--s-4) 0;
+`;
+
+export const RegisterLink = styled(Link)`
+  font-size: var(--fs-2xl);
+  color: var(--gold);
+  text-decoration: none;
+  margin: var(--s-2) 0;
 `;

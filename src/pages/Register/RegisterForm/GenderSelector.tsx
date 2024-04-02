@@ -1,0 +1,24 @@
+import {
+  FormError,
+  FormGroup,
+  FormInput,
+  FormLabel,
+} from "@components/formComponents";
+import { EGender } from "@interfaces/user.interface";
+import { capitalize } from "@utils/textUtils";
+
+export default function GenderSelector() {
+  return (
+    <FormGroup>
+      <FormLabel>Gender</FormLabel>
+      <FormInput component="select" name="gender">
+        {Object.values(EGender).map((item) => (
+          <option key={item} value={item}>
+            {capitalize(item)}
+          </option>
+        ))}
+      </FormInput>
+      <FormError name="gender" />
+    </FormGroup>
+  );
+}

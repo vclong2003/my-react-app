@@ -1,9 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import store from "../store";
+import store from "@store/index";
 
-import "../assets/css/global.css";
+import "react-image-crop/dist/ReactCrop.css";
+import "@assets/css/global.css";
+
+import UserProvider from "./UserProvider";
 
 interface IAppProviderProps {
   children: React.ReactNode;
@@ -12,7 +15,9 @@ interface IAppProviderProps {
 export default function AppProvider({ children }: IAppProviderProps) {
   return (
     <BrowserRouter>
-      <Provider store={store}>{children}</Provider>
+      <Provider store={store}>
+        <UserProvider>{children}</UserProvider>
+      </Provider>
     </BrowserRouter>
   );
 }
